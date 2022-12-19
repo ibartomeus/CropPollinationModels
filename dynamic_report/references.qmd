@@ -1,0 +1,15 @@
+---
+title: "Introduction"
+format: html
+editor: visual
+---
+
+\- Reilly et al. 2023 Submitted.
+
+\- Allen-Perkins A, et al. (2022) CropPol: a dynamic, open and global database on crop pollination. Ecology 103 (3): e3614.
+
+\- Garibaldi L et al. 2013 Wild pollinators enhance fruit set of crops regardless of honey-bee abundance. Science 339, 1608--1611. (doi:10.1126/science.1230200)
+
+\- Rader R et al. 2016 Non-bee insects are important contributors to global crop pollination. PNAS 113, 146--151. (doi:10.1073/pnas.1517092112)
+
+\- Dainese M et al. 2019 A global synthesis reveals biodiversity-mediated benefits for crop production. Science Advances 5: eaax0221.

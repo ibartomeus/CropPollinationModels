@@ -22,15 +22,18 @@ As all models are open, models can be updated if necessary and new models can be
 # Details  
 
 - `Reilly_models` folder contains the script which reproduce the original analisys and its useful to understand some decisions on how final modls where selected.
-- `dynamic_document` contains the Quarto webpage ... 
+- `dynamic_report` contains the Quarto webpage ... 
 
 # Refrences 
 
 - Reilly et al. 2023 Submitted.
-- Allen-Perkins A, et al. (2022) CropPol: a dynamic, open and global database on crop pollination. Ecology 103 (3): e3614.
-- 1: Garibaldi L et al. 2013 Wild pollinators enhance fruit set of crops regardless of honey-bee abundance. Science 339, 1608–1611. (doi:10.1126/science.1230200)
-- 2: Rader R et al. 2016 Non-bee insects are important contributors to global crop pollination. PNAS 113, 146–151. (doi:10.1073/pnas.1517092112)
-- 3: Dainese M et al. 2019 A global synthesis reveals biodiversity-mediated benefits for crop production. Science Advances 5: eaax0221.
+- Allen-Perkins A, et al. (2022) CropPol: a dynamic, open and global database on crop pollination. Ecology 103 (3): e3614.  
+- 1: Garibaldi L et al. 2013 Wild pollinators enhance fruit set of crops regardless of honey-bee abundance. Science 339, 1608–1611. (doi:10.1126/science.1230200). 
+- 2: Rader R et al. 2016 Non-bee insects are important contributors to global crop pollination. PNAS 113, 146–151. (doi:10.1073/pnas.1517092112). 
+- 3: Dainese M et al. 2019 A global synthesis reveals biodiversity-mediated benefits for crop production. Science Advances 5: eaax0221.  
 
-
+# To Do:  
+[] links to download PDF and social media
+[] add to / docs
+[] 
 

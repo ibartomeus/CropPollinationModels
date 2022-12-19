@@ -1,0 +1,13 @@
+---
+title: "Methods"
+format: html
+editor: visual
+---
+
+## The CropPol database
+
+Our analysis uses the CropPol database
+(Allen-Perkins et al. 2022) as is basis. CropPol is an open and dynamic (i.e., periodically updated) database of crop pollination studies that currently contains the data from 137 studies of 49 different crop species from around the world (version 1.1.1). The majority of these datasets provided data on both insect visitation rates and crop yields or related measurements and were used in the analyses conducted for this paper. Within each study, the most basic unit of observation at which pollinator visit counts and the resulting yield can be paired was the site-year (\"site\" is typically a field or part of a field). Some sites were sampled for multiple years, but single-year sites were also common. In our analyses, we allowed multiple years of data to be part of the same study as long as the collection methods did not change. We only included studies with at least three site-years, resulting in a total of 93 studies of 35 crops. Because some studies included multiple years, this dataset represents a total of 128 study-years, and a total of 2305 site-years. As expected, studies from Europe and North America were somewhat overrepresented in our sample, together totaling almost two thirds of the datasets. It is also likely that even within regions there are biases in the landscapes where studies were located and in which crops were selected. This limits our ability to infer patterns on a global scale, but currently represents the best available data.
+
+A strength of the dynamic database is that it will allow continuous
+updates to our analysis as the number of available studies grows.

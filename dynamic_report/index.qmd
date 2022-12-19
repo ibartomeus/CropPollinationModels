@@ -1,0 +1,10 @@
+---
+title: "Pollinator contribution to crop yield"
+format: html
+editor: visual
+---
+
+## Abstract
+
+Over 75% percent of the world\'s food crops are dependent on pollinators to at least some degree (IPBES 2017). However, the degree of pollinators contribution to crop yield is contested because there is a large variability in crop types, pollinator communities, agricultural practices and environmental contexts. Fortunately, since the first case studies reporting a positive effect of pollinators on crop yield, more and more data has accumulated. This allowed us to conduct synthesis summarizing what we know (e.g. Garibaldi et al 2013, Rader et al. 2016, Dainese et al 2019). However, as the question is data hungry and is still not settled, we aim to embrace this uncertainty and periodically report updates as our knowledge increases. \[summary of results here, automatically updated from code\]
+

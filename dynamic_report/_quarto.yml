@@ -1,0 +1,39 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Pollinator contribution to crop yield"
+  sidebar:
+    background: primary
+    # logo: "images/logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/ibartomeus/CropPollinationModels
+        text: GitHub
+    style: docked
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: introduction.qmd
+        text: Introduction
+      - href: results.qmd
+        text: Results
+      - href: methods.qmd
+        text: Methods
+      - href: what_next.qmd
+        text: What next? 
+      - href: references.qmd
+        text: References  
+      
+
+format:
+  html:
+    theme: simplex
+    #css: styles.css
+    toc: true
+    
+execute:
+  freeze: auto
