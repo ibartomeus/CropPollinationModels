@@ -33,10 +33,10 @@ As all models are open, models can be updated if necessary and new models can be
 - 3: Dainese M et al. 2019 A global synthesis reveals biodiversity-mediated benefits for crop production. Science Advances 5: eaax0221.  
 
 # To Do:  
-[] Add Links to download a PDF and social media to share. 
-[] Add htmls to /docs automatically to make it visible in github pages. 
-[] Add a news.md for versioning. 
-[] make github actions to work. 
-[] Re-think data cleaning. 
-[] Re-think final models to show
+[] Add Links to download a PDF and social media to share.   
+[] Add htmls to /docs automatically to make it visible in github pages.   
+[] Add a news.md for versioning.   
+[] make github actions to work.   
+[] Re-think data cleaning.   
+[] Re-think final models to show.  
 
