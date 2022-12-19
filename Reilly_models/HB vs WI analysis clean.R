@@ -14,22 +14,26 @@
 #4) sensitivity of results by subsampling and making funnel plots (fig 3), starting on line 1008
 
 ####################
-# set working directory on James's computer--change to match your own directory structure
-setwd("C:/Users/James/Documents/Research/Pollinators/OBServ")
-
-####################
 # load necessary packages 
 
 library(lme4)
 library(tidyverse)
 library(MuMIn)			# for AICc and model averaging
 #library(optimx)		# for alternative convergence algorithms in lme4 (if needed)
+library(RCurl)
 
 ####################
 # load csv of data downloaded from CropPol project on github.  If we get the data directly from an internet link, we must consider whether any changes would break the processing steps below.
 
-field_data = read.csv(file="CropPol_field_level_data downloaded 10-25-2022.csv", header=T)
-str(field_data)
+#field_data_old = read.csv(file="Reilly_models/CropPol_field_level_data downloaded 10-25-2022.csv", header=T) #file not uploaded to github!
+#str(field_data)
+# The version used in the published analysis should be: https://raw.githubusercontent.com/ibartomeus/OBservData/bf1deaababecb8c3e6ac2c674ae57f55c38cd69f/Final_Data/CropPol_field_level_data.csv
+x <- getURL("https://raw.githubusercontent.com/ibartomeus/OBservData/bf1deaababecb8c3e6ac2c674ae57f55c38cd69f/Final_Data/CropPol_field_level_data.csv")
+field_data <- read.csv(text = x)
+
+#dim(field_data_old)
+#dim(field_data)
+#all.equal(field_data_old, field_data) #Yes, equal versions.
 
 ##################################################
 # data processing: study IDs
@@ -150,7 +154,7 @@ unique(field_data2a$study_id2)	# 125 studies
 # I use visits instead of abundance for  Thijs_Fijen_Allium_porrum_France, Thijs_Fijen_Allium_porrum_Italy, and Virginie_Boreux_Coffea_canephora_India because of potential data issues in the visit data
 
 # read in a csv that lists whether to use the visitation_rate or abundance column for each study
-field_data_summary_edited = read.csv(file="field_data_summary_edited_v3.csv", header=T)
+field_data_summary_edited = read.csv(file="Reilly_models/field_data_summary_edited_v3.csv", header=T)
 field_data_summary_edited
 
 # After going back to the relevant papers, I also made some manual edits to the richness_restriction column in the CropPol database, which lists which insect groups were recorded for each study. These edits are in the "taxa_recorded_edited" column in this csv.  
