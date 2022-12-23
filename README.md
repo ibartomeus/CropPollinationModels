@@ -44,4 +44,6 @@ As all models are open, models can be updated if necessary and new models can be
 # Notes
 [ ] On commit -> [skip ci]
 [ ] Quarto en raiz, ojo paths   
+initial set up using: https://quarto.org/docs/publishing/github-pages.html
+- add relevant files, y correr desde terminal la primera vez
 

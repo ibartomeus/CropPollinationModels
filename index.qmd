@@ -13,7 +13,7 @@ James, Nacho\^1, Alfonso, Rachael, Lucas, ...
 Last update:
 
 ```{r}
-`Sys.time()`
+Sys.time()
 ```
 
 ## Abstract
