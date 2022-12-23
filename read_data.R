@@ -3,12 +3,9 @@
 
 #first load needed packages----
 
-library(RCurl)
-
 #now we read data from CropPol----
 
-x <- getURL("https://raw.githubusercontent.com/ibartomeus/OBservData/master/Final_Data/CropPol_field_level_data.csv")
-field_data <- read.csv(text = x)
+field_data <- read.csv("https://raw.githubusercontent.com/ibartomeus/OBservData/master/Final_Data/CropPol_field_level_data.csv")
 
 # data processing: study IDs----
 
