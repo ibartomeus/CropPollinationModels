@@ -40,5 +40,8 @@ As all models are open, models can be updated if necessary and new models can be
 [ ] Re-think data cleaning.   
 [ ] Re-think final models to show.  
 [ ] Use Renv to freeze package versions
+
+# Notes
 [ ] On commit -> [skip ci]
+[ ] Quarto en raiz, ojo paths   
 
