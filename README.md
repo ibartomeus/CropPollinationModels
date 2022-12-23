@@ -36,14 +36,14 @@ As all models are open, models can be updated if necessary and new models can be
 [ ] Add Links to download a PDF and social media to share.   
 [x] Add htmls to /docs automatically to make it visible in github pages.   
 [ ] Add a news.md for versioning.   
-[ ] make github actions to work.   
+[x] make github actions to work.   
 [ ] Re-think data cleaning.   
 [ ] Re-think final models to show.  
-[ ] Use Renv to freeze package versions
+[x] Use Renv to freeze package versions (init() from console).  
 
 # Notes
 [ ] On commit -> [skip ci]
-[ ] Quarto en raiz, ojo paths   
-initial set up using: https://quarto.org/docs/publishing/github-pages.html
+[x] Quarto en raiz, ojo paths   
+-initial set up using: https://quarto.org/docs/publishing/github-pages.html
 - add relevant files, y correr desde terminal la primera vez
 

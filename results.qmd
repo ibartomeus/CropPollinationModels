@@ -10,6 +10,7 @@ editor_options:
 # source the script to read and clean data
 source("read_data.R")
 library(lme4)
+
 ```
 
 ## How are the main crop visitors?
