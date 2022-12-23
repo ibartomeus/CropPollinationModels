@@ -1,1 +1,1 @@
-Sitemap: https://ibartomeus.github.io/CropPollinationModels/sitemap.xml
+Sitemap: https://github.com/ibartomeus/CropPollinationModels/sitemap.xml
