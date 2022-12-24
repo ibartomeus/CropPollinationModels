@@ -43,12 +43,17 @@ To set up the github actions we first created a gh-pages branch for deployment (
 [ ] Connect to Zenodo properly.   
 [ ] Can we add James original analysis without those being ran during ci?
 [x] Save previous estimate and store it to compare?   
-[ ] Add CropPol version used to the paper and how to cite.    
+[x] Add CropPol version used to the paper and how to cite.    
 [ ] Add send email action. 
 [ ] Create pull request first for extra safety?   
-[ ] Is it work to move webpages to a folder? How github actions work in this case?   
+[ ] Is it work to move webpages to a folder? How github actions work in this case?*.     
 [ ] Update R, Renv and do snapchot() again.
 
 # Notes
 If actions are triggered `on: push: branches: main` (they are not right now) you can skip continuous integration in the commit message by adding `[skip ci]` 
 
+* - name: Render and Publish
+  uses: quarto-dev/quarto-actions/publish@v2
+  with:
+    target: gh-pages
+    path: subdirectory-to-use

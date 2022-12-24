@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Pollinator contribution to crop yield"
+  title: "Pollinator contribution to crop yield\n"
   sidebar:
     background: primary
     # logo: "images/logo.png"
@@ -13,7 +13,10 @@ website:
       - icon: github
         href: https://github.com/ibartomeus/CropPollinationModels
         text: GitHub
-    style: docked
+      - icon: twitter
+        href: https://twitter.com
+    style: floating
+    search: true
     contents:
       - href: index.qmd
         text: Home
@@ -31,7 +34,7 @@ website:
 
 format:
   html:
-    theme: simplex
+    theme: minty
     #css: styles.css
     toc: true
     
