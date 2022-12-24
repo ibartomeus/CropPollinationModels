@@ -4,4 +4,4 @@ format: html
 editor: visual
 ---
 
-As all models are open, models can be updated if necessary and new models can be added into the report. If you want to contribute to the modelling efforts, let us know in an \[issues\]() or directly make a pull request.
+As all models are open, models will be updated regularly and new models can be added into the report. If you want to contribute to the modelling efforts, let us know in an \[issue\](https://github.com/ibartomeus/CropPollinationModels/issues) or directly make a pull request.

@@ -8,12 +8,12 @@ editor_options:
 
 ```{r load_things, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # source the script to read and clean data
-source("scripts/read_data.R")
+source("scripts/read_data.R") #think on storing the model outputs in the script and only loading those here. 
 library(lme4)
 
 ```
 
-## How are the main crop visitors?
+## 1) What are the relative contributions of honey bees versus wild insects to crop visitation worldwide?
 
 ```{r Fig1, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # run the main models-----
@@ -33,12 +33,11 @@ par(mar=c(4,4,4,4))
 boxplot(data=field_data8a, fracWI ~ study_id2, col=c("light gray"), xaxt = 'n', xlab="study", ylab="proportion of visits by wild insects", las = 1)
 axis(1,seq(5,90,5))
 #dev.off()
-
-
-
 ```
 
-## Which effect has honeybee and wild pollinator visits on yield?
+Fig 1: This figure shows...
+
+## 2) What are the relative contributions of honey bees versus wild insects to crop yield worldwide?
 
 ```{r Fig2, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # analysis: mixed models for HB vs WI------
@@ -50,21 +49,7 @@ axis(1,seq(5,90,5))
 
 mod9 = lmer(data=field_data8a, yield_z ~ wild_insects_z*honeybee_z + (1 + wild_insects_z|study_id2) + (1 + honeybee_z|study_id2) + (1 + wild_insects_z*honeybee_z|study_id2), na.action=na.fail, REML=T)
 
-summary(mod9)
-
-# analysis: mixed models for HB vs WI vs Richness------
-
-# for this we are using field_data9a, which is the subset of studies providing data for HB, WI, and Richness
-
-# I didn't get any convergence warnings when I ran these with the current data, but if it does happen, try adding one of these to the lmer statement:
-# control = lmerControl(optimizer="Nelder_Mead")
-# control = lmerControl(optimizer ='optimx', optCtrl=list(method='L-BFGS-B'))
-
-# note that I'm using 0+ in the random effect instead of 1+ since all studies are z-scored and thus constrained to have a mean of 0. My logic here is that there is no need to try to estimate separate intercepts for each study. We are still estimating the random slopes as usual.
-
-modR_18 = lmer(data=field_data9a, yield_z ~ wild_insects_z*honeybee_z + wild_insects_z*richness_z + honeybee_z*richness_z + (0 + wild_insects_z*honeybee_z|study_id2) + (0 + wild_insects_z*richness_z|study_id2) +  (0 + honeybee_z*richness_z|study_id2), na.action=na.fail, REML=T)
-
-summary(modR_18)
+#summary(mod9)
 
 # plots: random effect estimates by study, similar to Garibaldi et al 2013 fig 2b, but using model 9 -----
 
@@ -122,16 +107,38 @@ abline(h=0.070, lty="dashed", lwd=2)
 abline(h=0, lwd=1, col="black", lty="dotted")
 
 #dev.off()
-
-
 ```
 
-## How estimates changed over time?
+## 3) Is the total number of flower visits by pollinators sufficient to predict crop yields, or is the diversity of pollinator species also important?
 
 ```{r Fig3, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
+# analysis: mixed models for HB vs WI vs Richness------
+
+# for this we are using field_data9a, which is the subset of studies providing data for HB, WI, and Richness
+
+# I didn't get any convergence warnings when I ran these with the current data, but if it does happen, try adding one of these to the lmer statement:
+# control = lmerControl(optimizer="Nelder_Mead")
+# control = lmerControl(optimizer ='optimx', optCtrl=list(method='L-BFGS-B'))
+
+# note that I'm using 0+ in the random effect instead of 1+ since all studies are z-scored and thus constrained to have a mean of 0. My logic here is that there is no need to try to estimate separate intercepts for each study. We are still estimating the random slopes as usual.
+
+modR_18 = lmer(data=field_data9a, yield_z ~ wild_insects_z*honeybee_z + wild_insects_z*richness_z + honeybee_z*richness_z + (0 + wild_insects_z*honeybee_z|study_id2) + (0 + wild_insects_z*richness_z|study_id2) +  (0 + honeybee_z*richness_z|study_id2), na.action=na.fail, REML=T)
+
+#summary(modR_18)
+
+# We need a nice plot here...
+
+```
+
+## 4) How the relationships between pollinator visits, richness, and yield changed with the number of studies available?
+
+```{r Fig4, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+#Data is FAKE for now. need to be fixed in estimates_data.R
 estimates <- read.csv("scripts/estimates_data.csv")
 plot(estimates$estimate_HB, t = "b", col = "red", las = 1, xlab = "", ylab = "estimates", ylim = c(-0.5, 0.5),  xaxt = "n")
 axis(1, at = 1:nrow(estimates), labels = estimates$timepoint, las=2, cex.axis = 0.7)
 points(estimates$estimate_WB, t = "b", col = "green")
+# Maybe we can add a legend and use somehow the info on sample size.
 ```
