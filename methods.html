@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -61,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -77,12 +140,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Pollinator contribution to crop yield</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/ibartomeus/CropPollinationModels" title="GitHub" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com" title="" class="sidebar-tool px-1"><i class="bi bi-twitter"></i></a>
 </div>
     </div>
       </div>
@@ -133,6 +197,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#the-croppol-database" id="toc-the-croppol-database" class="nav-link active" data-scroll-target="#the-croppol-database">The CropPol database</a></li>
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data processing</a></li>
+  <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis">Statistical analysis</a></li>
   </ul>
 </nav>
     </div>
@@ -158,8 +224,21 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="the-croppol-database" class="level2">
 <h2 class="anchored" data-anchor-id="the-croppol-database">The CropPol database</h2>
-<p>Our analysis uses the CropPol database (Allen-Perkins et al.&nbsp;2022) as is basis. CropPol is an open and dynamic (i.e., periodically updated) database of crop pollination studies that currently contains the data from 137 studies of 49 different crop species from around the world (version 1.1.1). The majority of these datasets provided data on both insect visitation rates and crop yields or related measurements and were used in the analyses conducted for this paper. Within each study, the most basic unit of observation at which pollinator visit counts and the resulting yield can be paired was the site-year ("site" is typically a field or part of a field). Some sites were sampled for multiple years, but single-year sites were also common. In our analyses, we allowed multiple years of data to be part of the same study as long as the collection methods did not change. We only included studies with at least three site-years, resulting in a total of 93 studies of 35 crops. Because some studies included multiple years, this dataset represents a total of 128 study-years, and a total of 2305 site-years. As expected, studies from Europe and North America were somewhat overrepresented in our sample, together totaling almost two thirds of the datasets. It is also likely that even within regions there are biases in the landscapes where studies were located and in which crops were selected. This limits our ability to infer patterns on a global scale, but currently represents the best available data.</p>
+<p>Our analysis uses the CropPol database (Allen-Perkins et al.&nbsp;2022) as is basis. CropPol is an open and dynamic (i.e., periodically updated) database of crop pollination studies. The majority of these datasets provided data on both insect visitation rates and crop yields or related measurements and were used in the analyses conducted for this paper. Within each study, the most basic unit of observation at which pollinator visit counts and the resulting yield can be paired was the site-year (“site” is typically a field or part of a field). Some sites were sampled for multiple years, but single-year sites were also common. In our analyses, we allowed multiple years of data to be part of the same study as long as the collection methods did not change. We only included studies with at least three site-years. As expected, studies from Europe and North America were somewhat overrepresented in our sample, together totaling almost two thirds of the datasets. It is also likely that even within regions there are biases in the landscapes where studies were located and in which crops were selected. This limits our ability to infer patterns on a global scale, but currently represents the best available data.</p>
 <p>A strength of the dynamic database is that it will allow continuous updates to our analysis as the number of available studies grows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can add a map, but I don't want to load more packages if not necesary.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-processing">Data processing</h2>
+<p>Across the all datasets, the number of pollinators visiting flowers was measured in two different ways: either by observing the number of insects visiting flowers per unit time (a true visit rate), or by netting insects visiting flowers and summing the number of specimens collected. In the context of crop pollination studies, the latter data type is commonly referred to as “net data”, and might be more accurately described as visitor abundance on flowers than as a true visit rate. In this analysis, we used the two interchangeably as “number of visits”. If both types of measurements were available for a given dataset, preference was given to true visit rates; any potential variation in mean or variance that might result from the different collection methods across studies should be mitigated because we converted all values to z-scores for the analysis. All datasets categorized visit rates or visitor abundances into the following pollinator groups: honey bee, bumble bees, other wild bees, non-bee Hymenoptera, Syrphids, Bombyliids, other flies, beetles, Lepidoptera, and other insects, although not every study recorded every group. For our main analysis, we chose to combine the visits by all pollinators other than the honey bee into a “wild insects” group. Thus we compared two main groups, honey bee (HB) and wild insects (WI), consistent with previous analyses (e.g.&nbsp;Garibaldi et al.&nbsp;2013). We did not drop studies that found or reported only bees as visitors, on the assumption that researchers for the most part did not neglect sampling insect groups that were important for the pollination of their crop. We did however drop 10 studies that specifically focused on wild insect visitation and did not record honey bee visits at all, because these studies would misattribute to wild insects the yield due to honey bees. We did not need to do a similar filtering step for wild insects because wild insects were recorded in all studies in the final set.</p>
+<p>Crop yield is defined as the amount of agricultural production harvested per unit of harvested area. In our datasets, often this was simply kg per unit area, but sometimes was more specific to the crop, e.g., kg per plant, fruit per branch, fruit/seed set, etc. (Table S1). When more than one production variable was provided, we used the variable listed by the data providers as “yield” in the online database as opposed to the alternative “yield2.” We did not include any studies that only estimated pollen deposition (visits multiplied by pollen per visit) because this not a direct measurement of the effect of pollinator visitation. As above for insect visitation rates, we performed analyses on z-scores to mitigate differences in scale between metrics.</p>
+</section>
+<section id="statistical-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-analysis">Statistical analysis</h2>
+<p>We analyzed the relative importance of the honey bee and wild insect visits to crop yields by using a single model. The full model included the effects of honey bee visits, wild insect visits, and their interaction. All models included both random intercepts and slopes for the predictor variable study. We chose to fit random slopes in addition to random intercepts because it is reasonable to assume that the slope of the relationship between visits and yield could vary across crop studies for any number of reasons that might differ across crops such as degree of pollinator dependence (Klein et al.&nbsp;2007), bloom phenology, or management practices. In all models, visits by each insect group and the outcome variable (yield) were transformed to z-scores prior to running to model, so the slopes of the fixed effect estimates from the model were interpreted as effect sizes for comparison. Details on alternative models can be found in Reilly et al 2023…</p>
+<p>To determine whether crop yields increased in the presence of more wild insect species or whether it was simply the total number of insect visits to flowers that was important, we analyzed a new set of models that contained pollinator species richness in addition to flower visitation rate by honey bees and wild insects… [I will probably show only a single model including both richness and abundance].</p>
 
 
 </section>
