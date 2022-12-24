@@ -125,3 +125,13 @@ abline(h=0, lwd=1, col="black", lty="dotted")
 
 
 ```
+
+## How estimates changed over time?
+
+```{r Fig3, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+estimates <- read.csv("scripts/estimates_data.csv")
+plot(estimates$estimate_HB, t = "b", col = "red", las = 1, xlab = "", ylab = "estimates", ylim = c(-0.5, 0.5),  xaxt = "n")
+axis(1, at = 1:nrow(estimates), labels = estimates$timepoint, las=2, cex.axis = 0.7)
+points(estimates$estimate_WB, t = "b", col = "green")
+```

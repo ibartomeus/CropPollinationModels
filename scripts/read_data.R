@@ -136,7 +136,7 @@ unique(field_data2a$study_id2)	# 125 studies
 # I use visits instead of abundance for  Thijs_Fijen_Allium_porrum_France, Thijs_Fijen_Allium_porrum_Italy, and Virginie_Boreux_Coffea_canephora_India because of potential data issues in the visit data
 
 # read in a csv that lists whether to use the visitation_rate or abundance column for each study
-field_data_summary_edited <- read.csv(file="Reilly_models/field_data_summary_edited_v3.csv", header=T)
+field_data_summary_edited <- read.csv(file="scripts/field_data_summary_edited_v3.csv", header=T)
 field_data_summary_edited 
 ##IB note: it would be great if we add this info to CropPol to do that in a generic way.
 
