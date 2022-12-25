@@ -36,18 +36,18 @@ The `scripts` folder contains the script which reproduce the original analysis a
 - Dainese M et al. 2019 A global synthesis reveals biodiversity-mediated benefits for crop production. Science Advances 5: eaax0221.  
 
 # To Do:  
-[ ] Is it worth to move quarto pages to a separate folder? How github actions work in this case?. See https://quarto.org/docs/publishing/github-pages.html (Additional options) I am not sure is worth the trouble.
-[ ] Add Link to download a PDF: Maybe using pandoc, or maybe by creating a quarto Document which "includes" all others: https://quarto.org/docs/authoring/includes.html But this needs to be rendered and stored. 
-[ ] Can we add James original analysis without those being ran during ci? Issues are increasing dependencies, and it's very slow to run bc of simulations. A DO NOT RUN would be enough. But maybe it does't run by default as is not summoned elsewhere?
-[ ] Update estimates is ran only online, so it do not save changes... grgr
-[ ] Add send email action to publish.ylm 
-[ ] Re-think data cleaning. automate as much as possible.   
+[ ] Is it worth to move quarto pages to a separate folder? How github actions work in this case?. See https://quarto.org/docs/publishing/github-pages.html (Additional options) I am not sure is worth the trouble.  
+[ ] Add Link to download a PDF: Maybe using pandoc, or maybe by creating a quarto Document which "includes" all others: https://quarto.org/docs/authoring/includes.html But this needs to be rendered and stored.   
+[ ] Can we add James original analysis without those being ran during ci? Issues are increasing dependencies, and it's very slow to run bc of simulations. A DO NOT RUN would be enough. But maybe it does't run by default as is not summoned elsewhere?  
+[ ] Update estimates is ran only online, so it do not save changes... grgr. 
+[ ] Add send email action to publish.ylm   
+[ ] Re-think data cleaning. automate as much as possible.     
 [ ] Re-think final models to show. General models and analysis.   
 [x] Connect to Zenodo properly.   
 [x] Save previous estimate and store it to compare?   
 [x] Add CropPol version used to the paper and how to cite.    
 [ ] Create pull request first for extra safety? Not for now...   
-[ ] Update R to the latest version, Renv and do snapchot() again?
+[ ] Update R to the latest version, Renv and do snapchot() again?  
 
 # Notes
-If actions are triggered `on: push: branches: main` (they are not right now) you can skip continuous integration in the commit message by adding `[skip ci]` 
+If actions are triggered `on: push: branches: main` (they are not right now) you can skip continuous integration in the commit message by adding `[skip ci]`   
