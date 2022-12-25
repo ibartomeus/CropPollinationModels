@@ -49,25 +49,18 @@
     "text": "4) How the relationships between pollinator visits, richness, and yield changed with the number of studies available?"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Pollinator contribution to crop yield",
-    "section": "",
-    "text": "library(gh) #How heavy would this library be?\nreleases <- gh(\"GET /repos/ibartomeus/OBservData/releases\", \n   owner = \"ibartomeus\",\n   repo = \"OBservData\")\nversionCropPol <- releases[[1]][[\"tag_name\"]]\n\n#readLines(\"https://github.com/ibartomeus/OBservData/releases/latest\") #can we do this using base r? This web resolves to the last tag...\n\nreleases <- gh(\"GET /repos/ibartomeus/CropPollinationModels/releases\", \n   owner = \"ibartomeus\",\n   repo = \"CropPollinationModels\")\n#versionCropPollinationModels <- releases[[1]][[\"tag_name\"]]\n\nestimates <- read.csv(\"scripts/estimates_data.csv\")"
-  },
-  {
     "objectID": "index.html#authors",
     "href": "index.html#authors",
     "title": "Pollinator contribution to crop yield",
     "section": "Authors",
-    "text": "Authors\nJames Reilly, Ignasi Bartomeus 1, Alfonso Allen-Perkins, Rachael Winfree, Lucas Garibaldi, …\n\n\nEstación Biológica de Doñana (EBD-CSIC), Avenida Américo Vespucio 26, E-41092 Sevilla, Spain.\n\n\nLast update: 2022-12-24 19:45:31"
+    "text": "Authors\nJames Reilly, Ignasi Bartomeus 1, Alfonso Allen-Perkins, Rachael Winfree, Lucas Garibaldi, …\n\n\nEstación Biológica de Doñana (EBD-CSIC), Avenida Américo Vespucio 26, E-41092 Sevilla, Spain.\n\n\nLast update: 2022-12-25"
   },
   {
     "objectID": "index.html#abstract",
     "href": "index.html#abstract",
     "title": "Pollinator contribution to crop yield",
     "section": "Abstract",
-    "text": "Abstract\nOver 75% percent of the world’s food crops are dependent on pollinators to at least some degree (IPBES 2017). However, the precise degree of pollinators contribution to crop yield is uncertain because there is a large variability in crop types, pollinator communities, agricultural practices and environmental contexts. Fortunately, since the first case studies reporting a positive effect of pollinators on crop yield, more and more data has accumulated. This allowed us to conduct synthesis summarizing what we know (e.g. Garibaldi et al 2013, Rader et al. 2016, Dainese et al 2019). However, as the question is data hungry and is still not settled, we aim to embrace this uncertainty and periodically report updates as our knowledge increases. This repository uses CropPol v1.1.1, a open database with 93 studies to regress the abundance of wildbees and honeybees on crop yield. The overall estimate of wild bee abundances is 0.064 and that of honeybees is 0.074. This abstract can be enhanced and needs a final sentence about the dynamic nature of this repository.\n\nHow to cite this:\nYou can cite this dynamic document directly: J. Reilly, I. Bartomeus, A. Allen-Perkins, L. Garibaldi, R. Winfree. 2022 Pollinator contribution to crop yield. version DOI: Zenodo Link TBA.\nOr the original paper: TBA\n\n\nDownload in PDF:\n\n\nSource code:\nYou can find the source code, as well as previous releases of this repositoty at: https://github.com/ibartomeus/CropPollinationModels"
+    "text": "Abstract\nOver 75% percent of the world’s food crops are dependent on pollinators to at least some degree (IPBES 2017). However, the precise degree of pollinators contribution to crop yield is uncertain because there is a large variability in crop types, pollinator communities, agricultural practices and environmental contexts. Fortunately, since the first case studies reporting a positive effect of pollinators on crop yield, more and more data has accumulated. This allowed us to conduct synthesis summarizing what we know (e.g. Garibaldi et al 2013, Rader et al. 2016, Dainese et al 2019). However, as the question is data hungry and is still not settled, we aim to embrace this uncertainty and periodically report updates as our knowledge increases. This repository uses CropPol v1.1.1, an open database with 93 studies to regress the abundance of wildbees and honeybees on crop yield. The overall estimate of wild bee abundances is 0.064 and that of honeybees is 0.074. This abstract can be enhanced and needs a final sentence about the dynamic nature of this repository.\n\nHow to cite this:\nYou can cite this dynamic document directly: J. Reilly, I. Bartomeus, A. Allen-Perkins, L. Garibaldi, R. Winfree. 2022 Pollinator contribution to crop yield. version 0.0.1. DOI: 10.5281/zenodo.7481551.\nOr the original paper: TBA\n\n\nDownload in PDF:\n\n\nSource code:\nYou can find the source code, as well as previous releases of this repositoty at: https://github.com/ibartomeus/CropPollinationModels"
   },
   {
     "objectID": "methods.html",
@@ -95,6 +88,6 @@
     "href": "what_next.html",
     "title": "What next?",
     "section": "",
-    "text": "As all models are open, models will be updated regularly and new models can be added into the report. If you want to contribute to the modelling efforts, let us know in an [issue](https://github.com/ibartomeus/CropPollinationModels/issues) or directly make a pull request."
+    "text": "As all models are open, models will be updated regularly and new models can be added into the report. If you want to contribute to the modelling efforts, let us know in an issue or directly make a pull request."
   }
 ]
