@@ -6,7 +6,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
+```{r load_things, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(gh) #How heavy would this library be?
 releases <- gh("GET /repos/ibartomeus/OBservData/releases", 
    owner = "ibartomeus",
@@ -18,7 +18,7 @@ versionCropPol <- releases[[1]][["tag_name"]]
 releases <- gh("GET /repos/ibartomeus/CropPollinationModels/releases", 
    owner = "ibartomeus",
    repo = "CropPollinationModels")
-#versionCropPollinationModels <- releases[[1]][["tag_name"]]
+versionCropPollinationModels <- releases[[1]][["tag_name"]]
 
 estimates <- read.csv("scripts/estimates_data.csv")
 ```
@@ -29,15 +29,15 @@ James Reilly, Ignasi Bartomeus ^1^, Alfonso Allen-Perkins, Rachael Winfree, Luca
 
 > (1) Estación Biológica de Doñana (EBD-CSIC), Avenida Américo Vespucio 26, E-41092 Sevilla, Spain.
 
-**Last update:** `r Sys.time()`
+**Last update:** `r Sys.Date()`
 
 ## Abstract
 
-Over 75% percent of the world's food crops are dependent on pollinators to at least some degree (IPBES 2017). However, the precise degree of pollinators contribution to crop yield is uncertain because there is a large variability in crop types, pollinator communities, agricultural practices and environmental contexts. Fortunately, since the first case studies reporting a positive effect of pollinators on crop yield, more and more data has accumulated. This allowed us to conduct synthesis summarizing what we know (e.g. Garibaldi et al 2013, Rader et al. 2016, Dainese et al 2019). However, as the question is data hungry and is still not settled, we aim to embrace this uncertainty and periodically report updates as our knowledge increases. This repository uses CropPol `r versionCropPol`, a open database with `r estimates[nrow(estimates), "n"]` studies to regress the abundance of wildbees and honeybees on crop yield. The overall estimate of wild bee abundances is `r round(estimates[nrow(estimates), "estimate_WB"], 3)` and that of honeybees is `r round(estimates[nrow(estimates), "estimate_HB"], 3)`. This abstract can be enhanced and needs a final sentence about the dynamic nature of this repository.
+Over 75% percent of the world's food crops are dependent on pollinators to at least some degree (IPBES 2017). However, the precise degree of pollinators contribution to crop yield is uncertain because there is a large variability in crop types, pollinator communities, agricultural practices and environmental contexts. Fortunately, since the first case studies reporting a positive effect of pollinators on crop yield, more and more data has accumulated. This allowed us to conduct synthesis summarizing what we know (e.g. Garibaldi et al 2013, Rader et al. 2016, Dainese et al 2019). However, as the question is data hungry and is still not settled, we aim to embrace this uncertainty and periodically report updates as our knowledge increases. This repository uses CropPol `r versionCropPol`, an open database with `r estimates[nrow(estimates), "n"]` studies to regress the abundance of wildbees and honeybees on crop yield. The overall estimate of wild bee abundances is `r round(estimates[nrow(estimates), "estimate_WB"], 3)` and that of honeybees is `r round(estimates[nrow(estimates), "estimate_HB"], 3)`. This abstract can be enhanced and needs a final sentence about the dynamic nature of this repository.
 
 ### How to cite this:
 
-You can cite this dynamic document directly: J. Reilly, I. Bartomeus, A. Allen-Perkins, L. Garibaldi, R. Winfree. `r substr(Sys.Date(), 1, 4)` Pollinator contribution to crop yield. version `r #versionCropPollinationModels` DOI: Zenodo Link TBA.
+You can cite this dynamic document directly: J. Reilly, I. Bartomeus, A. Allen-Perkins, L. Garibaldi, R. Winfree. `r substr(Sys.Date(), 1, 4)` Pollinator contribution to crop yield. version `r versionCropPollinationModels`. DOI: [10.5281/zenodo.7481551](https://doi.org/10.5281/zenodo.7481551).
 
 Or the original paper: TBA
 
@@ -45,4 +45,4 @@ Or the original paper: TBA
 
 ### Source code:
 
-You can find the source code, as well as previous releases of this repositoty at: https://github.com/ibartomeus/CropPollinationModels
+You can find the source code, as well as previous releases of this repositoty at: [https://github.com/ibartomeus/CropPollinationModels](https://github.com/ibartomeus/CropPollinationModels)

@@ -92,14 +92,14 @@ modelout_mod9 = modelout
 
 par(mfrow=c(1,2))
 
-modelout_mod9 = modelout_mod9[order(mean_wi), , drop = FALSE]
+modelout_mod9 = modelout_mod9[order(modelout_mod9$mean_wi), , drop = FALSE]
 plot(1:nrow(modelout_mod9), modelout_mod9$mean_wi, pch=19, col="#00bb5c", ylim=c(-.75,.75), ylab="wild insect slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Wild Insects")
 axis(1, at=seq(0,nrow(modelout_mod9),10), labels=seq(0,nrow(modelout_mod9),10))
 arrows(1:nrow(modelout_mod9), modelout_mod9$ci_lower_wi, 1:nrow(modelout_mod9), modelout_mod9$ci_upper_wi, length=0.05, angle=90, code=3, col="#00bb5c", lwd=1.5)
 abline(h=0.060, lty="dashed", lwd=2)
 abline(h=0, lwd=1, col="black", lty="dotted")
 
-modelout_mod9 = modelout_mod9[order(mean_hb), , drop = FALSE]
+modelout_mod9 = modelout_mod9[order(modelout_mod9$mean_hb), , drop = FALSE]
 plot(1:nrow(modelout_mod9), modelout_mod9$mean_hb, pch=19, col="#c96d00", ylim=c(-.75,.75), ylab="honey bee slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Honey Bee")
 axis(1, at=seq(0,nrow(modelout_mod9),10), labels=seq(0,nrow(modelout_mod9),10))
 arrows(1:nrow(modelout_mod9), modelout_mod9$ci_lower_hb, 1:nrow(modelout_mod9), modelout_mod9$ci_upper_hb, length=0.05, angle=90, code=3, col="#c96d00", lwd=1.5)
