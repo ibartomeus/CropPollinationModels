@@ -33,6 +33,14 @@ jobs:
       - name: Run an R script to track estimates    
         run: Rscript scripts/track_estimates.R        
         
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Update estimates from R script" || echo "No changes to commit"
+          git push origin || echo "No changes to commit"-
+      
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
