@@ -32,8 +32,8 @@ estimates_data <- data.frame(timepoint = c(Sys.Date()),
                              estimate_WB = c(fixef(mod9)["wild_insects_z"]),
                              n = c(length(unique(field_data8a$study_id2))))
 
-if(round(old_table$estimate_WB[nrow(old_table)],8) != round(estimates_data$estimate_WB[1],8) | 
-   round(old_table$estimate_HB[nrow(old_table)],8) != round(estimates_data$estimate_HB[1],8)){
+if(round(old_table$estimate_WB[nrow(old_table)],4) != round(estimates_data$estimate_WB[1],4) | 
+   round(old_table$estimate_HB[nrow(old_table)],4) != round(estimates_data$estimate_HB[1],4)){
   write.table(estimates_data, "scripts/estimates_data.csv", 
               append = TRUE, sep = ",", row.names = FALSE,
               col.names = FALSE)
