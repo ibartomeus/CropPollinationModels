@@ -19,6 +19,9 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         
+      - name: Install TinyTeX
+        run: quarto install tool tinytex --log-level warning
+      
       - name: Install cURL Headers
         run: sudo apt-get install libcurl4-openssl-dev
       
