@@ -17,7 +17,7 @@ library(lme4)
 
 ```
 
-## 1) What are the relative contributions of honey bees versus wild insects to crop visitation worldwide?
+### 1) What are the relative contributions of honey bees versus wild insects to crop visitation worldwide?
 
 ```{r Fig1, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # run the main models-----
@@ -41,7 +41,7 @@ axis(1,seq(5,90,5))
 
 Fig 1: This figure shows...
 
-## 2) What are the relative contributions of honey bees versus wild insects to crop yield worldwide?
+### 2) What are the relative contributions of honey bees versus wild insects to crop yield worldwide?
 
 ```{r Fig2, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # analysis: mixed models for HB vs WI------
@@ -113,7 +113,7 @@ abline(h=0, lwd=1, col="black", lty="dotted")
 #dev.off()
 ```
 
-## 3) Is the total number of flower visits by pollinators sufficient to predict crop yields, or is the diversity of pollinator species also important?
+### 3) Is the total number of flower visits by pollinators sufficient to predict crop yields, or is the diversity of pollinator species also important?
 
 ```{r Fig3, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -135,7 +135,7 @@ modR_18 = lmer(data=field_data9a, yield_z ~ wild_insects_z*honeybee_z + wild_ins
 
 ```
 
-## 4) How the relationships between pollinator visits, richness, and yield changed with the number of studies available?
+### 4) How the relationships between pollinator visits, richness, and yield changed with the number of studies available?
 
 ```{r Fig4, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
