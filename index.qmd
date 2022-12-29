@@ -43,6 +43,8 @@ Or the original paper: TBA
 
 ### Download in PDF:
 
+<https://ibartomeus.github.io/CropPollinationModels/Report_CropPolModels.pdf>
+
 ### Source code:
 
 You can find the source code, as well as previous releases of this repositoty at: <https://github.com/ibartomeus/CropPollinationModels>
