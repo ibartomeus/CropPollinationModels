@@ -1,8 +1,12 @@
 ---
-title: "Introduction"
+title: "Pollinator contribution to crop yield"
 format: html
 editor: visual
 ---
+
+::: {.content-visible when-format="html"}
+# Introduction
+:::
 
 Over 75% percent of the world's food crops are dependent on pollinators to at least some degree (IPBES 2017). In most crop systems, pollination is provided through a combination of managed honey bees and wild insects, which consist primarily of wild bees, but also flies and other insects (Larson et al. 2001, Rader et al. 2016). Despite not being managed for crop pollination, wild insects often make up a significant fraction of total flower visits and can even be the dominant pollinators in situations where agricultural intensity and/or land use is not extreme (Kremen et al. 2002, Ricketts et al. 2008, Garibaldi et al. 2011, Kennedy et al. 2013, Koh et al. 2016, Reilly et al. 2020).
 

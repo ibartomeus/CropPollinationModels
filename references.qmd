@@ -5,9 +5,7 @@ editor: visual
 ---
 
 ::: {.content-visible when-format="html"}
-
-## References
-
+# References
 :::
 
 \- Reilly et al. 2023 Submitted.

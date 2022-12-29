@@ -1,7 +1,11 @@
 ---
-title: "What next?"
+title: "Pollinator contribution to crop yield"
 format: html
 editor: visual
 ---
+
+::: {.content-visible when-format="html"}
+# What next?
+:::
 
 As all models are open, models will be updated regularly and new models can be added into the report. If you want to contribute to the modelling efforts, let us know in an [issue](https://github.com/ibartomeus/CropPollinationModels/issues) or directly make a pull request.

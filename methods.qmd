@@ -1,8 +1,12 @@
 ---
-title: "Methods"
+title: "Pollinator contribution to crop yield"
 format: html
 editor: visual
 ---
+
+::: {.content-visible when-format="html"}
+# Methods
+:::
 
 ## The CropPol database
 

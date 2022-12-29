@@ -1,10 +1,14 @@
 ---
-title: "Results"
+title: "Pollinator contribution to crop yield"
 format: html
 editor: visual
 editor_options: 
   chunk_output_type: console
 ---
+
+::: {.content-visible when-format="html"}
+# Results
+:::
 
 ```{r load__more_things, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # source the script to read and clean data
