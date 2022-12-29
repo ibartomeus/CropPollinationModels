@@ -1,8 +1,14 @@
 ---
-title: "References"
+title: "Pollinator contribution to crop yield"
 format: html
 editor: visual
 ---
+
+::: {.content-visible when-format="html"}
+
+## References
+
+:::
 
 \- Reilly et al. 2023 Submitted.
 

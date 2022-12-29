@@ -36,19 +36,16 @@ The `scripts` folder contains the script which reproduce the original analysis a
 - Dainese M et al. 2019 A global synthesis reveals biodiversity-mediated benefits for crop production. Science Advances 5: eaax0221.  
 
 # To Do:  
-[ ] Is it worth to move quarto pages to a separate folder? How github actions work in this case?. See https://quarto.org/docs/publishing/github-pages.html (Additional options) I am not sure is worth the trouble.  
-[ ] Run read_data.R only once (now is ran twice in track_estimates.R and results.qmd)
-[ ] Add Link to download a PDF: Maybe using pandoc, or maybe by creating a quarto Document which "includes" all others: https://quarto.org/docs/authoring/includes.html But this needs to be rendered and stored.   
-[ ] Can we add James original analysis without those being ran during ci? Issues are increasing dependencies, and it's very slow to run bc of simulations. A DO NOT RUN would be enough. But maybe it does't run by default as is not summoned elsewhere?  Yes, we can add it safely, as it won't run if not sourced.
-[ ] Update estimates is ran only online, so it do not save changes... grgr. fixed via: https://beamilz.com/posts/series-gha/2022-series-gha-2-creating-your-first-action/en/#jobs.   
-[ ] Add send email action to publish.ylm See https://github.com/marketplace/actions/send-email.      
 [ ] Re-think data cleaning. automate as much as possible.     
-[ ] Re-think final models to show. General models and analysis.   
-[x] Connect to Zenodo properly.   
-[x] Save previous estimate and store it to compare?   
-[x] Add CropPol version used to the paper and how to cite.    
-[ ] Create pull request first for extra safety? Not for now... see https://github.com/marketplace/actions/create-pull-request   
-[ ] Update R to the latest version, Renv and do snapchot() again?  
+[ ] Re-think final models to show. General models and analysis. Note past estimates are fake for now   
+[ ] Run read_data.R only once and save model outputs (now is ran twice in track_estimates.R and results.qmd). Easy fix.   
+[x] Add Link to download a PDF: Maybe using pandoc, or maybe by creating a quarto Document which "includes" all others: https://quarto.org/docs/authoring/includes.html But this needs to be rendered and stored. Easy fix?   
+
+# Not urgent.    
+[ ] Is it worth to move quarto pages to a separate folder? How github actions work in this case?. See https://quarto.org/docs/publishing/github-pages.html (Additional options) I am not sure is worth the trouble.   
+[ ] Add send email action to publish.ylm See https://github.com/marketplace/actions/send-email. Not done for now      
+[ ] Create pull request first for extra safety? Not for now... see https://github.com/marketplace/actions/create-pull-request     
+[ ] Update R to the latest version, Renv and do snapchot() again?   
 
 # Notes
 If actions are triggered `on: push: branches: main` (they are not right now) you can skip continuous integration in the commit message by adding `[skip ci]`   

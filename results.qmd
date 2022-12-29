@@ -6,7 +6,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r load_things, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r load__more_things, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # source the script to read and clean data
 source("scripts/read_data.R") #think on storing the model outputs in the script and only loading those here. 
 library(lme4)

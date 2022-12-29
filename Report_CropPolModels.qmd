@@ -1,0 +1,27 @@
+---
+title: "Pollinator contribution to crop yield"
+format: pdf
+editor: visual
+---
+
+{{< include index.qmd >}}
+
+## Introduction
+
+{{< include introduction.qmd >}}
+
+## Methods
+
+{{< include methods.qmd >}}
+
+## Results
+
+{{< include results.qmd >}}
+
+## What next?
+
+{{< include what_next.qmd >}}
+
+## References
+
+{{< include references.qmd >}}
