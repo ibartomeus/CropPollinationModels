@@ -36,15 +36,10 @@ The `scripts` folder contains the script which reproduce the original analysis a
 - Dainese M et al. 2019 A global synthesis reveals biodiversity-mediated benefits for crop production. Science Advances 5: eaax0221.  
 
 # To Do:  
-[ ] Re-think data cleaning. automate as much as possible.     
-[ ] Re-think final models to show. General models and analysis. Note past estimates are fake for now   
-[ ] Run read_data.R only once and save model outputs (now is ran twice in track_estimates.R and results.qmd). Easy fix.   
+[x] Re-think data cleaning. automate as much as possible.     
+[x] Re-think final models to show. General models and analysis. Note past estimates are fake for now   
 
 # Not urgent.    
 [ ] Is it worth to move quarto pages to a separate folder? How github actions work in this case?. See https://quarto.org/docs/publishing/github-pages.html (Additional options) I am not sure is worth the trouble.   
-[ ] Add send email action to publish.ylm See https://github.com/marketplace/actions/send-email. Not done for now      
+[ ] Add send email action to publish.ylm See https://github.com/marketplace/actions/send-email. Not done for now.        
 [ ] Create pull request first for extra safety? Not for now... see https://github.com/marketplace/actions/create-pull-request     
-[ ] Update R to the latest version, Renv and do snapchot() again?   
-
-# Notes
-If actions are triggered `on: push: branches: main` (they are not right now) you can skip continuous integration in the commit message by adding `[skip ci]`   

@@ -10,14 +10,12 @@
 # write.table(estimates_data, "scripts/estimates_data.csv",
 #          row.names = FALSE, sep = ",")
 
-#IMPORTANT: Dates and estimates are placeholders now. FETCH THE RIGHT DATA
+#IMPORTANT: Dates and estimates are placeholders for now. FETCH THE RIGHT DATA
 
 #Add new estimates----
 
 old_table <- read.csv("scripts/estimates_data.csv")
-source("scripts/read_data.R") #If ran here, I think the best approach 
-#is saving the model outputs somewhere so results qmd can use it.
-
+source("scripts/read_data.R") #Once ran here, data will be made available to other scripts.
 library(lme4)
 mod9 = lmer(data=field_data8a, 
             yield_z ~ wild_insects_z*honeybee_z + 
@@ -38,5 +36,6 @@ if(round(old_table$estimate_WB[nrow(old_table)],4) != round(estimates_data$estim
               append = TRUE, sep = ",", row.names = FALSE,
               col.names = FALSE)
 }  
+
 
 

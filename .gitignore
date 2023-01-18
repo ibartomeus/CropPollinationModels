@@ -5,3 +5,4 @@
 .DS_Store
 /.quarto/
 /_site/
+temp_data.RData

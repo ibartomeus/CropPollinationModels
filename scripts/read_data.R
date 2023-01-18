@@ -605,3 +605,6 @@ length(unique(field_data9a$study_id2))	# 63
 
 nrow(field_data8a)
 nrow(field_data9a)
+
+#Save data to make it accesible to other scripts down the chain.
+save(field_data8a, field_data9a, file = "scripts/temp_data.RData")
