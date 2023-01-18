@@ -7,7 +7,7 @@ This repo creates a dynamic paper to understand the effect of pollinators on cro
 # The question:  
 
 We aim to provide a permanent and updated answer to the question: **"Which is the contribution of insect pollinators to crop production?"**.
-Using the [CropPol](https://github.com/ibartomeus/OBservData) database in combination with the best models identified in Reilly et al 2023, we provide a dynamic document that runs three types of models ... This dynamic document can be found here: [https://ibartomeus.github.io/CropPollinationModels](https://ibartomeus.github.io/CropPollinationModels).  
+Using the [CropPol](https://github.com/ibartomeus/OBservData) database in combination with the best model identified in Reilly et al 2023, we provide a dynamic document that runs the full model and sumarize the effect sizes of all parameters. This dynamic document can be found here: [https://ibartomeus.github.io/CropPollinationModels](https://ibartomeus.github.io/CropPollinationModels).  
 
 # Why?  
 
@@ -23,9 +23,9 @@ As all models are open, models can be updated if necessary and new models can be
 
 This repo is hosted in github and uses github actions (`/.github/workflows/publish.yml`) to trigger the document update. To build the webpage we used Quarto (`.qmd` files + `_quarto.yml`). To ensure consistency in package versions we use Renv packge (using `init()` to set up the R dependency management and `snapshot()` to update it).
 
-To set up the github actions we first created a gh-pages branch for deployment (`quarto publish gh-pages` in terminal; details [here](https://quarto.org/docs/publishing/github-pages.html)) and connect it to github (on github `Settings/Pages/Deploy from branch/gh-pages/(root)`). You also need to add a `.nojekyll` empty file in the root and gitignore `/.quarto/` and `/_site/`. We scheduled the github action to ran once a month using `cron` but it can be triggered manually from the webpage. Note that you can also re-build the webpage manually (`quarto publish gh-pages` in terminal). Also, R scripts ran on a server, as specified in the quarto and github actions ylm´s thanks to `Renv` package and github computer time generosity. Everything is licenced with a MIT licence (`LICENCE`) and all this couldn't be possible without the help of Paco Rodriguez.    
+To set up the github actions we first created a gh-pages branch for deployment (`quarto publish gh-pages` in terminal; details [here](https://quarto.org/docs/publishing/github-pages.html)) and connect it to github (on github `Settings/Pages/Deploy from branch/gh-pages/(root)`). You also need to add a `.nojekyll` empty file in the root and gitignore `/.quarto/` and `/_site/`. We scheduled the github action to ran once a month using `cron` but it can be triggered manually from the github webpage. Note that you can also re-build the webpage manually (`quarto publish gh-pages` in terminal). Also, R scripts ran on a server, as specified in the quarto and github actions ylm´s thanks to `Renv` package and github computer time generosity. Everything is licenced with a MIT licence (`LICENCE`) and all this couldn't be possible without the help of Paco Rodriguez.    
 
-The `scripts` folder contains the script which reproduce the original analysis and its useful to understand some decisions on how final models were selected. It also contains scripts to read the data and store past results.
+The `scripts` folder contains the script which reproduce the original analysis for the recods and its useful to understand some decisions on how final models were selected. It also contains scripts to read the data and store past results.
 
 # Refrences 
 
@@ -39,7 +39,7 @@ The `scripts` folder contains the script which reproduce the original analysis a
 [x] Re-think data cleaning. automate as much as possible.     
 [x] Re-think final models to show. General models and analysis. Note past estimates are fake for now   
 
-# Not urgent.    
+# Maybe To Do, but not urgent.    
 [ ] Is it worth to move quarto pages to a separate folder? How github actions work in this case?. See https://quarto.org/docs/publishing/github-pages.html (Additional options) I am not sure is worth the trouble.   
 [ ] Add send email action to publish.ylm See https://github.com/marketplace/actions/send-email. Not done for now.        
 [ ] Create pull request first for extra safety? Not for now... see https://github.com/marketplace/actions/create-pull-request     
