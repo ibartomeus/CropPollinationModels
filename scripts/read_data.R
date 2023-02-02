@@ -9,13 +9,12 @@ field_data <- read.csv("https://raw.githubusercontent.com/ibartomeus/OBservData/
 
 # in order to maximize the sample size within each study, we keep all the years of each study together.  
 # CropPol currently gives each study_year a separate study_id, so I make a "study_id2" column that lumps years within study, and then fix various inconsistencies
-## IB note: I wonder if keeping years separated makes also sense
 
 unique(field_data$study_id2)	# 144 studies as of 1/27/2023
 
 # data processing: drop data that we can't use----
 
-unique(field_data2a$use_visits_or_abundance)
+unique(field_data$use_visits_or_abundance)
 
 # drop pan trap data
 field_data2a = subset(field_data, !use_visits_or_abundance %in% c(
@@ -434,3 +433,4 @@ nrow(field_data9a) # 1129 as of 1/27/2023
 
 #Save data to make it accesible to other scripts down the chain.
 save(field_data8a, field_data9a, file = "scripts/temp_data.RData")
+
