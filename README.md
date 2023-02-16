@@ -35,11 +35,3 @@ The `scripts` folder contains the script which reproduce the original analysis f
 - Rader R et al. 2016 Non-bee insects are important contributors to global crop pollination. PNAS 113, 146–151. (doi:10.1073/pnas.1517092112). 
 - Dainese M et al. 2019 A global synthesis reveals biodiversity-mediated benefits for crop production. Science Advances 5: eaax0221.  
 
-# To Do:  
-[x] Re-think data cleaning. automate as much as possible.     
-[x] Re-think final models to show. General models and analysis. Note past estimates are fake for now   
-
-# Maybe To Do, but not urgent.    
-[ ] Is it worth to move quarto pages to a separate folder? How github actions work in this case?. See https://quarto.org/docs/publishing/github-pages.html (Additional options) I am not sure is worth the trouble.   
-[ ] Add send email action to publish.ylm See https://github.com/marketplace/actions/send-email. Not done for now.        
-[ ] Create pull request first for extra safety? Not for now... see https://github.com/marketplace/actions/create-pull-request     
