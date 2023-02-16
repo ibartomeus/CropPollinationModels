@@ -22,4 +22,4 @@ Here we use a recently published, global compilation of data on crop yield and f
 
 3\) Is the total number of flower visits by pollinators sufficient to predict crop yields, or is the diversity of pollinator species also important?
 
-4\) Are the relationships between pollinator visits, richness, and yield stable with the number of studies currently available?
+4\) How the relationships between pollinator visits, richness, and yield has changed as the number of studies available grows?

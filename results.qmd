@@ -19,6 +19,8 @@ library(lme4)
 
 ### 1) What are the relative contributions of honey bees versus wild insects to crop visitation worldwide?
 
+We observe a large variation in the relative contribution of honey bee visitation rates and other wild insects within and acorss crops. While some crops are solely visited by wild insects in some areas, others are mainly visited by honeybees.
+
 ```{r Fig1, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 # analysis: proportion of visits by HB vs WI
@@ -38,11 +40,11 @@ axis(1,seq(5,90,5))
 
 ```
 
-Fig 1: This figure shows the proportion of total visits provided by wild insects (vs. honey bee) for each pollination study.  In these boxplots, the bold center line is the median, the hollow boxes cover the interquartile range (IQR), and the whiskers extend to the most extreme points within 1.5*IQR from the median.  If any points are more extreme than this, they are plotted as gray circles. 
+Fig 1: This figure shows the proportion of total visits provided by wild insects (vs. honey bee) for each pollination study. In these boxplots, the bold center line is the median, the hollow boxes cover the interquartile range (IQR), and the whiskers extend to the most extreme points within 1.5\*IQR from the median. If any points are more extreme than this, they are plotted as gray circles.
 
 ### 2) What are the relative contributions of honey bees versus wild insects to crop yield worldwide?
 
-```{r Fig2, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r model, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 # analysis: mixed models for HB vs WI------
 
 # for this we are using field_data8a, which has HB and WI, and where we have entered manual 0's for HB z-scores in 2 systems where they were =0.
@@ -109,7 +111,11 @@ modelout_mod_R18 = modelout
 
 # plot figure 2
 # plots random effect estimates by study, similar to Garibaldi et al 2013 fig 2b -----
+```
 
+Similarly, we observe a large variation on the effect of wild and honeybee visitation rates on crop yields, with an overall small, but positive effect of both guilds. The wild insects estimate is `r round(modelout_mod_R18$mean_wi, 3)`, and the honeybee estimate is `r round(modelout_mod_R18$mean_hb, 3)`.
+
+```{r Fig2, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 par(mfrow=c(1,3))
 
 modelout_mod_R18 = modelout_mod_R18[order(modelout_mod_R18$mean_wi), , drop = FALSE]
@@ -135,9 +141,11 @@ abline(h=0, lwd=1, col="black", lty="dotted")
 
 ```
 
-Fig 2: This figure shows the estimated means and 95% CIs for the effect of wild insects, honey bee, and species richness on crop yield for each pollination study. The dashed black line is the overall mean across all studies. Means were calculated using the random effect estimates from Model R18 in the paper.  
+Fig 2: This figure shows the estimated means and 95% CIs for the effect of wild insects, honey bee, and species richness on crop yield for each pollination study. The dashed black line is the overall mean across all studies. Means were calculated using the random effect estimates from the full model.
 
 ### 3) Is the total number of flower visits by pollinators sufficient to predict crop yields, or is the diversity of pollinator species also important?
+
+Overall, species richness has a positive effect on yield (pollinator richness estimate is `r round(modelout_mod_R18$mean_rich, 3)`)
 
 ```{r Fig3, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -166,10 +174,11 @@ arrows(
 
 ```
 
-Fig 3: This figure shows the current overall mean estimate (and 95% CIs) for the effect of wild insects, honey bees, and richness on crop yield. Estimates based on the CropPol database are generated using model R18 as described in the paper.  
-
+Fig 3: This figure shows the current overall mean estimate (and 95% CIs) for the effect of wild insects, honey bees, and richness on crop yield. Estimates based on the CropPol database are generated using the full model as described in the methods.
 
 ### 4) How the relationships between pollinator visits, richness, and yield changed with the number of studies available?
+
+Since the first sinthesis papers, we found that the effect size tend to decrease as more studies are added to the analysis.
 
 ```{r Fig4, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -191,5 +200,4 @@ legend("topright", inset=.03, legend=c("wild insects", "honey bee", "richness"),
 
 ```
 
-Fig 4: This figure shows the history of the estimated effects of wild insects, honey bees, and richness on crop yield over time. Literature estimates are drawn from Garibaldi et al. 2013, Garibaldi et al. 2015, Rader et al. 2016, and Dainesse et al. 2019. Estimates based on the CropPol database are generated using model R18 as described in the paper.  
-
+Fig 4: This figure shows the history of the estimated effects of wild insects, honey bees, and richness on crop yield over time. Literature estimates are drawn from Garibaldi et al. 2013, Garibaldi et al. 2015, Rader et al. 2016, and Dainesse et al. 2019. Estimates based on the CropPol database are generated using the full model as described in methods.
