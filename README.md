@@ -6,7 +6,7 @@ This repo creates a dynamic paper to understand the effect of pollinators on cro
 
 # The question:  
 
-We aim to provide a permanent and updated answer to the question: **"Which is the contribution of insect pollinators to crop production?"**.
+We aim to provide a permanent and updated answer to the question: **"What is the contribution of insect pollinators to crop production?"**.
 Using the [CropPol](https://github.com/ibartomeus/OBservData) database in combination with the best model identified in Reilly et al 2023, we provide a dynamic document that runs the full model and sumarize the effect sizes of all parameters. This dynamic document can be found here: [https://ibartomeus.github.io/CropPollinationModels](https://ibartomeus.github.io/CropPollinationModels).  
 
 # Why?  
@@ -27,7 +27,7 @@ To set up the github actions we first created a gh-pages branch for deployment (
 
 The `scripts` folder contains the script which reproduce the original analysis for the recods and its useful to understand some decisions on how final models were selected. It also contains scripts to read the data and store past results.
 
-# Refrences 
+# References 
 
 - Reilly et al. 2023 Submitted.
 - Allen-Perkins A, et al. (2022) CropPol: a dynamic, open and global database on crop pollination. Ecology 103 (3): e3614.  
