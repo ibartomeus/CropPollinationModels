@@ -4,7 +4,7 @@
 # (run ONLY once, hence commented)
 
 # estimates_data <- data.frame(
-	# timepoint =            c("2013-03-29", "2015-08-02","2016-01-05","2019-10-16", "2022-12-10"),
+	# timepoint =            c(2013-03-29, 2015-08-02, 2016-01-05,2019-10-16, 2022-12-10),
 	# estimate_HB =          c(0.128,  NA,    -0.019,NA, 0.085),
 	# estimate_WI =          c(0.302,  NA,    0.187, NA, 0.078),
 	# estimate_richness =    c(0.201,  0.07,  NA,    0.106, 0.036),
@@ -50,12 +50,12 @@ if (
               append = TRUE, sep = ",", row.names = FALSE,
               col.names = FALSE)
 } else if (
-	round(old_table$estimate_WI[nrow(old_table)],4) != round(estimates_data$estimate_WI[1],4) | 
-	round(old_table$estimate_HB[nrow(old_table)],4) != round(estimates_data$estimate_HB[1],4) |
-	round(old_table$estimate_richness[nrow(old_table)],4) != round(estimates_data$estimate_richness[1],4) |
-	round(old_table$estimate_HBxWI[nrow(old_table)],4) != round(estimates_data$estimate_HBxWI[1],4) |
-	round(old_table$estimate_HBxrichness[nrow(old_table)],4) != round(estimates_data$estimate_HBxrichness[1],4) |
-	round(old_table$estimate_WIxrichness[nrow(old_table)],4) != round(estimates_data$estimate_WIxrichness[1],4) 
+	round(old_table$estimate_WI[nrow(old_table)],3) != round(estimates_data$estimate_WI[1],3) | 
+	round(old_table$estimate_HB[nrow(old_table)],3) != round(estimates_data$estimate_HB[1],3) |
+	round(old_table$estimate_richness[nrow(old_table)],3) != round(estimates_data$estimate_richness[1],3) |
+	round(old_table$estimate_HBxWI[nrow(old_table)],3) != round(estimates_data$estimate_HBxWI[1],3) |
+	round(old_table$estimate_HBxrichness[nrow(old_table)],3) != round(estimates_data$estimate_HBxrichness[1],3) |
+	round(old_table$estimate_WIxrichness[nrow(old_table)],3) != round(estimates_data$estimate_WIxrichness[1],3) 
 ) {
   write.table(estimates_data, "scripts/estimates_data.csv", 
               append = TRUE, sep = ",", row.names = FALSE,
