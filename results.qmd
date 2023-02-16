@@ -19,7 +19,7 @@ library(lme4)
 
 ### 1) What are the relative contributions of honey bees versus wild insects to crop visitation worldwide?
 
-We observe a large variation in the relative contribution of honey bee visitation rates and other wild insects within and acorss crops. While some crops are solely visited by wild insects in some areas, others are mainly visited by honeybees.
+We observe a large variation in the relative contribution of honey bee visitation rates and other wild insects within and across crops. While some crops are solely visited by wild insects in some areas, others are mainly visited by honeybees.
 
 ```{r Fig1, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -197,10 +197,14 @@ points(which(!is.na(estimates$estimate_HB)),subset(estimates, !is.na(estimate_HB
 points(which(!is.na(estimates$estimate_WI)),subset(estimates, !is.na(estimate_WI))$estimate_WI, t = "b", col = "#c96d00", lwd=2)
 points(which(!is.na(estimates$estimate_richness)),subset(estimates, !is.na(estimate_richness))$estimate_richness, t = "b", col = "#00a2ca", lwd=2)
 abline(h=0, lty="dashed", col="gray")
+text(y = rep(-0.075, nrow(estimates)), 
+     x = 1:nrow(estimates),
+     labels = paste0("(",estimates$n, ")"), col = "gray", cex = 0.5)
+      
 
 legend("topright", inset=.03, legend=c("wild insects", "honey bee", "richness"), col=c("#c96d00", "#00bb5c", "#00a2ca"), lty=1, lwd=2, box.lty=0, cex = 0.7)
 # Maybe we can add a legend and use somehow the info on sample size.
 
 ```
 
-**Fig 4:** This figure shows the history of the estimated effects of wild insects, honey bees, and richness on crop yield over time. Literature estimates are drawn from Garibaldi et al. 2013, Garibaldi et al. 2015, Rader et al. 2016, and Dainesse et al. 2019. Estimates based on the CropPol database are generated using the full model as described in methods.
+**Fig 4:** This figure shows the history of the estimated effects of wild insects, honey bees, and richness on crop yield over time. Literature estimates are drawn from Garibaldi et al. 2013, Garibaldi et al. 2015, Rader et al. 2016, and Dainesse et al. 2019. Estimates based on the CropPol database are generated using the full model as described in methods. Sample size is indicated between brackets below each time period.
