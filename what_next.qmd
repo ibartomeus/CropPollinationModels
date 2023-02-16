@@ -8,4 +8,4 @@ editor: visual
 # What next?
 :::
 
-As all models are open, models will be updated regularly and new models can be added into the report. If you want to contribute to the modelling efforts, let us know in an [issue](https://github.com/ibartomeus/CropPollinationModels/issues) or directly make a pull request.
+Models will be updated regularly and as all scripts are open, enhanced models or new models answering new questions can be added into the report in the future. If you want to contribute to the modelling efforts, let us know in an [issue](https://github.com/ibartomeus/CropPollinationModels/issues) or directly make a pull request.

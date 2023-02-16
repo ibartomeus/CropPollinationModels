@@ -4,14 +4,14 @@
 # (run ONLY once, hence commented)
 
 # estimates_data <- data.frame(
-	# timepoint =            c("2013-03-29", "2015-08-2","2016-01-05","2019-10-16"),
-	# estimate_HB =          c(0.128,  NA,    -0.019,NA),
-	# estimate_WI =          c(0.302,  NA,    0.187, NA),
-	# estimate_richness =    c(0.201,  0.07,  NA,    0.106),
-	# estimate_HBxWI =       c(-0.030, NA,    NA,    NA),	
-	# estimate_HBxrichness = c(NA,     NA,    NA,    NA),	
-	# estimate_WIxrichness = c(NA,     NA,    NA,    NA),		
-	# n =                    c(17,     33,    19,    42))
+	# timepoint =            c("2013-03-29", "2015-08-02","2016-01-05","2019-10-16", "2022-12-10"),
+	# estimate_HB =          c(0.128,  NA,    -0.019,NA, 0.085),
+	# estimate_WI =          c(0.302,  NA,    0.187, NA, 0.078),
+	# estimate_richness =    c(0.201,  0.07,  NA,    0.106, 0.036),
+	# estimate_HBxWI =       c(-0.030, NA,    NA,    NA, -0.015),	
+	# estimate_HBxrichness = c(NA,     NA,    NA,    NA, 0.006),	
+	# estimate_WIxrichness = c(NA,     NA,    NA,    NA, -0.033),		
+	# n =                    c(17,     33,    19,    42, 93))
 # estimates_data
 # write.table(estimates_data, "scripts/estimates_data.csv", row.names = FALSE, sep = ",")
 
