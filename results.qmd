@@ -20,8 +20,8 @@ library(lme4)
 ### 1) What are the relative contributions of honey bees versus wild insects to crop visitation worldwide?
 
 ```{r Fig1, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
-# run the main models-----
-# analysis: proportion of visits by HB vs WI, or HB, wild bees, and non bees
+
+# analysis: proportion of visits by HB vs WI
 
 # fraction of visits by WI boxplot
 
@@ -32,14 +32,13 @@ field_data8a$fracHB = field_data8a$honeybee/field_data8a$all_insects
 # reorder factor levels of study so they will plot in order of increasing median when we run a boxplot
 field_data8a$study_id2 <- reorder(field_data8a$study_id2, field_data8a$fracWI, median, na.rm=T)
 
-#png(filename = "wild insect visits by crop boxplots 11-16-2022.png", width = 9, height = 5, units = "in", bg = "white", res = 600)
 par(mar=c(4,4,4,4))
 boxplot(data=field_data8a, fracWI ~ study_id2, col=c("light gray"), xaxt = 'n', xlab="study", ylab="proportion of visits by wild insects", las = 1)
 axis(1,seq(5,90,5))
-#dev.off()
+
 ```
 
-Fig 1: This figure shows...
+Fig 1: This figure shows the proportion of total visits provided by wild insects (vs. honey bee) for each pollination study.  In these boxplots, the bold center line is the median, the hollow boxes cover the interquartile range (IQR), and the whiskers extend to the most extreme points within 1.5*IQR from the median.  If any points are more extreme than this, they are plotted as gray circles. 
 
 ### 2) What are the relative contributions of honey bees versus wild insects to crop yield worldwide?
 
@@ -51,89 +50,124 @@ Fig 1: This figure shows...
 
 # note: the following models will return a warning of "boundary (singular) fit: see ?isSingular".  I think this is due to using z-scores, which make the mean of all studies =0, so it should not be a problem for the models.
 
-mod9 = lmer(data=field_data8a, yield_z ~ wild_insects_z*honeybee_z + (1 + wild_insects_z|study_id2) + (1 + honeybee_z|study_id2) + (1 + wild_insects_z*honeybee_z|study_id2), na.action=na.fail, REML=T)
-
-#summary(mod9)
-
-# plots: random effect estimates by study, similar to Garibaldi et al 2013 fig 2b, but using model 9 -----
-
-a=fixef(mod9)
-a_wi = a[2]		#overall slope of wild insects 
-a_hb = a[3]		#overall slope of honey bee 
-b=ranef(mod9)
-qq <- attr(ranef(mod9, condVar = TRUE)[[1]], "postVar") # Extract the variances of the random effects
-qq_wi = qq[[1]]
-qq_hb = qq[[2]]
-e_wi=(sqrt(qq_wi))	
-e_wi=e_wi[2,2,]		
-e_hb=(sqrt(qq_hb))	
-e_hb=e_hb[2,2,]		
-b_wi = b[[1]][2]	# slope of wild insects by crop?  lmer calls this the conditional mean
-b_hb = b[[1]][4]	# slope of hb by crop?  lmer calls this the conditional mean
-mean_wi=(b_wi+a_wi)			# mean ...  add by crop part to overall slope
-ci_lower_wi=(b_wi+a_wi)-(e_wi*2)	# lower CI
-ci_upper_wi=(b_wi+a_wi)+(e_wi*2)	# upper CI
-mean_hb=(b_hb+a_hb)			# mean ...  add by crop part to overall slope
-ci_lower_hb=(b_hb+a_hb)-(e_hb*2)	# lower CI
-ci_upper_hb=(b_hb+a_hb)+(e_hb*2)	# upper CI
-
-###
-modelout = cbind(mean_wi, ci_lower_wi, ci_upper_wi, mean_hb, ci_lower_hb, ci_upper_hb)
-colnames(modelout)[1] = "mean_wi"
-colnames(modelout)[2] = "ci_lower_wi"
-colnames(modelout)[3] = "ci_upper_wi"
-colnames(modelout)[4] = "mean_hb"
-colnames(modelout)[5] = "ci_lower_hb"
-colnames(modelout)[6] = "ci_upper_hb"
-
-modelout$crop = rownames(modelout)
-#modelout
-
-modelout_mod9 = modelout
-
-# plot figure 2
-#png(filename = "slopes by crop MODEL 5 10-25-2022.png", width = 10, height = 5, units = "in", bg = "white", res = 600)
-
-par(mfrow=c(1,2))
-
-modelout_mod9 = modelout_mod9[order(modelout_mod9$mean_wi), , drop = FALSE]
-plot(1:nrow(modelout_mod9), modelout_mod9$mean_wi, pch=19, col="#00bb5c", ylim=c(-.75,.75), ylab="wild insect slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Wild Insects")
-axis(1, at=seq(0,nrow(modelout_mod9),10), labels=seq(0,nrow(modelout_mod9),10))
-arrows(1:nrow(modelout_mod9), modelout_mod9$ci_lower_wi, 1:nrow(modelout_mod9), modelout_mod9$ci_upper_wi, length=0.05, angle=90, code=3, col="#00bb5c", lwd=1.5)
-abline(h=0.060, lty="dashed", lwd=2)
-abline(h=0, lwd=1, col="black", lty="dotted")
-
-modelout_mod9 = modelout_mod9[order(modelout_mod9$mean_hb), , drop = FALSE]
-plot(1:nrow(modelout_mod9), modelout_mod9$mean_hb, pch=19, col="#c96d00", ylim=c(-.75,.75), ylab="honey bee slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Honey Bee")
-axis(1, at=seq(0,nrow(modelout_mod9),10), labels=seq(0,nrow(modelout_mod9),10))
-arrows(1:nrow(modelout_mod9), modelout_mod9$ci_lower_hb, 1:nrow(modelout_mod9), modelout_mod9$ci_upper_hb, length=0.05, angle=90, code=3, col="#c96d00", lwd=1.5)
-abline(h=0.070, lty="dashed", lwd=2)
-abline(h=0, lwd=1, col="black", lty="dotted")
-
-#dev.off()
-```
-
-### 3) Is the total number of flower visits by pollinators sufficient to predict crop yields, or is the diversity of pollinator species also important?
-
-```{r Fig3, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
-
 # analysis: mixed models for HB vs WI vs Richness------
-
 # for this we are using field_data9a, which is the subset of studies providing data for HB, WI, and Richness
 
 # I didn't get any convergence warnings when I ran these with the current data, but if it does happen, try adding one of these to the lmer statement:
 # control = lmerControl(optimizer="Nelder_Mead")
 # control = lmerControl(optimizer ='optimx', optCtrl=list(method='L-BFGS-B'))
 
-# note that I'm using 0+ in the random effect instead of 1+ since all studies are z-scored and thus constrained to have a mean of 0. My logic here is that there is no need to try to estimate separate intercepts for each study. We are still estimating the random slopes as usual.
+# below I have coded the model with 1+ in the random effect syntax, however, it is worth considering whether we should use 0+ since all studies are z-scored and thus constrained to have a mean of 0. The logic would be that there is no need to try to estimate separate intercepts for each study. Regardless we would estimate the random slopes as usual.
 
-modR_18 = lmer(data=field_data9a, yield_z ~ wild_insects_z*honeybee_z + wild_insects_z*richness_z + honeybee_z*richness_z + (0 + wild_insects_z*honeybee_z|study_id2) + (0 + wild_insects_z*richness_z|study_id2) +  (0 + honeybee_z*richness_z|study_id2), na.action=na.fail, REML=T)
+mod_R18 = lmer(data=field_data9a, yield_z ~ wild_insects_z + honeybee_z + richness_z + wild_insects_z:honeybee_z + wild_insects_z:richness_z + honeybee_z:richness_z 
++ (1 + wild_insects_z|study_id2)  + (1 + honeybee_z|study_id2) + (1 + richness_z|study_id2) + (1 + wild_insects_z:honeybee_z|study_id2) + (1 + wild_insects_z:richness_z|study_id2) + (1 + honeybee_z:richness_z|study_id2), na.action=na.fail, REML=T)
+summary(mod_R18)
 
-#summary(modR_18)
+# note that the following calculations will only work with the 1+ random effect coding discussed above
+a=fixef(mod_R18)
+a_wi = a[2]		#overall slope of wild insects 
+a_hb = a[3]		#overall slope of honey bee 
+a_rich = a[4]
+b=ranef(mod_R18)
+qq <- attr(ranef(mod_R18, condVar = TRUE)[[1]], "postVar") # Extract the variances of the random effects
+qq_wi = qq[[1]]
+qq_hb = qq[[2]]
+qq_rich = qq[[3]]
+e_wi=(sqrt(qq_wi))	
+e_wi=e_wi[2,2,]
+e_hb=(sqrt(qq_hb))	
+e_hb=e_hb[2,2,]
+e_rich=(sqrt(qq_rich))	
+e_rich=e_rich[2,2,]	
+b_wi = b[[1]][2]	# slope of wild insects by crop?  lmer calls this the conditional mean
+b_hb = b[[1]][4]	# slope of hb by crop?  lmer calls this the conditional mean
+b_rich = b[[1]][6]	# slope of rich by crop?  lmer calls this the conditional mean
+mean_wi=(b_wi+a_wi)			# mean ...  add by crop part to overall slope
+ci_lower_wi=(b_wi+a_wi)-(e_wi*2)	# lower CI
+ci_upper_wi=(b_wi+a_wi)+(e_wi*2)	# upper CI
+mean_hb=(b_hb+a_hb)			# mean ...  add by crop part to overall slope
+ci_lower_hb=(b_hb+a_hb)-(e_hb*2)	# lower CI
+ci_upper_hb=(b_hb+a_hb)+(e_hb*2)	# upper CI
+mean_rich=(b_rich+a_rich)			# mean ...  add by crop part to overall slope
+ci_lower_rich=(b_rich+a_rich)-(e_rich*2)	# lower CI
+ci_upper_rich=(b_rich+a_rich)+(e_rich*2)	# upper CI
 
-# We need a nice plot here...
+###
+modelout = cbind(mean_wi, ci_lower_wi, ci_upper_wi, mean_hb, ci_lower_hb, ci_upper_hb, mean_rich, ci_lower_rich, ci_upper_rich)
+colnames(modelout)[1] = "mean_wi"
+colnames(modelout)[2] = "ci_lower_wi"
+colnames(modelout)[3] = "ci_upper_wi"
+colnames(modelout)[4] = "mean_hb"
+colnames(modelout)[5] = "ci_lower_hb"
+colnames(modelout)[6] = "ci_upper_hb"
+colnames(modelout)[7] = "mean_rich"
+colnames(modelout)[8] = "ci_lower_rich"
+colnames(modelout)[9] = "ci_upper_rich"
+modelout$crop = rownames(modelout)
+modelout
+modelout_mod_R18 = modelout
+
+# plot figure 2
+# plots random effect estimates by study, similar to Garibaldi et al 2013 fig 2b -----
+
+par(mfrow=c(1,3))
+
+modelout_mod_R18 = modelout_mod_R18[order(modelout_mod_R18$mean_wi), , drop = FALSE]
+plot(1:nrow(modelout_mod_R18), modelout_mod_R18$mean_wi, pch=19, col="#00bb5c", ylim=c(-.75,.75), ylab="wild insect slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Wild Insects")
+axis(1, at=seq(0,nrow(modelout_mod_R18),10), labels=seq(0,nrow(modelout_mod_R18),10))
+arrows(1:nrow(modelout_mod_R18), modelout_mod_R18$ci_lower_wi, 1:nrow(modelout_mod_R18), modelout_mod_R18$ci_upper_wi, length=0.05, angle=90, code=3, col="#00bb5c", lwd=1.5)
+abline(h=a_wi, lty="dashed", lwd=2)
+abline(h=0, lwd=1, col="black", lty="dotted")
+
+modelout_mod_R18 = modelout_mod_R18[order(modelout_mod_R18$mean_hb), , drop = FALSE]
+plot(1:nrow(modelout_mod_R18), modelout_mod_R18$mean_hb, pch=19, col="#c96d00", ylim=c(-.75,.75), ylab="honey bee slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Honey Bee")
+axis(1, at=seq(0,nrow(modelout_mod_R18),10), labels=seq(0,nrow(modelout_mod_R18),10))
+arrows(1:nrow(modelout_mod_R18), modelout_mod_R18$ci_lower_hb, 1:nrow(modelout_mod_R18), modelout_mod_R18$ci_upper_hb, length=0.05, angle=90, code=3, col="#c96d00", lwd=1.5)
+abline(h=a_hb, lty="dashed", lwd=2)
+abline(h=0, lwd=1, col="black", lty="dotted")
+
+modelout_mod_R18 = modelout_mod_R18[order(modelout_mod_R18$mean_rich), , drop = FALSE]
+plot(1:nrow(modelout_mod_R18), modelout_mod_R18$mean_rich, pch=19, col="#00a2ca", ylim=c(-.75,.75), ylab="richness slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Honey Bee")
+axis(1, at=seq(0,nrow(modelout_mod_R18),10), labels=seq(0,nrow(modelout_mod_R18),10))
+arrows(1:nrow(modelout_mod_R18), modelout_mod_R18$ci_lower_rich, 1:nrow(modelout_mod_R18), modelout_mod_R18$ci_upper_rich, length=0.05, angle=90, code=3, col="#00a2ca", lwd=1.5)
+abline(h=a_rich, lty="dashed", lwd=2)
+abline(h=0, lwd=1, col="black", lty="dotted")
 
 ```
+
+Fig 2: This figure shows the estimated means and 95% CIs for the effect of wild insects, honey bee, and species richness on crop yield for each pollination study. The dashed black line is the overall mean across all studies. Means were calculated using the random effect estimates from Model R18 in the paper.  
+
+### 3) Is the total number of flower visits by pollinators sufficient to predict crop yields, or is the diversity of pollinator species also important?
+
+```{r Fig3, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+
+# plot point estimates with CIs
+par(mfrow=c(1,1))
+par(mar = c(3,3,3,3))
+
+# plot coefficients from Model 5 (89 studies)
+thisout = data.frame(par = c("Wild insects", "Honey bee", "Richness"), 
+	mean_modR18 = c(summary(mod_R18)$coefficients[2], summary(mod_R18)$coefficients[3], summary(mod_R18)$coefficients[4]),
+	CIlower_mod_R18 = c(summary(mod_R18)$coefficients[2] - 1.96*summary(mod_R18)$coefficients[9], summary(mod_R18)$coefficients[3] - 1.96*summary(mod_R18)$coefficients[10], summary(mod_R18)$coefficients[4] - 1.96*summary(mod_R18)$coefficients[11]),
+	CIuppermod_R18 = c(summary(mod_R18)$coefficients[2] + 1.96*summary(mod_R18)$coefficients[9],summary(mod_R18)$coefficients[3] + 1.96*summary(mod_R18)$coefficients[10], summary(mod_R18)$coefficients[4] + 1.96*summary(mod_R18)$coefficients[11])
+	)
+	
+plot(1:3, thisout$mean_modR18, pch=19, col=c("#00bb5c", "#c96d00","#00a2ca"), cex=1.75, ylim=c(-0.1,0.3),  xlab = NA, xaxt = 'n', xlim=c(.5,3.5), ylab="Overall slope (mean, 95% CI)", main="")
+axis(1, at=1:3, labels=thisout$par, srt=90)
+
+abline(h=0, lty="dashed", col="gray")
+
+
+arrows(
+	1:3, thisout$CIlower_mod_R18,
+	1:3, thisout$CIuppermod_R18,
+       length=0.1, angle=90, code=3, col=c("#00bb5c", "#c96d00","#00a2ca"), lwd=2.5)
+
+```
+
+Fig 3: This figure shows the current overall mean estimate (and 95% CIs) for the effect of wild insects, honey bees, and richness on crop yield. Estimates based on the CropPol database are generated using model R18 as described in the paper.  
+
 
 ### 4) How the relationships between pollinator visits, richness, and yield changed with the number of studies available?
 
@@ -143,51 +177,19 @@ modR_18 = lmer(data=field_data9a, yield_z ~ wild_insects_z*honeybee_z + wild_ins
 
 estimates <- read.csv("scripts/estimates_data.csv")
 
+par(mfrow=c(1,1))
+plot(1:nrow(estimates),estimates$estimate_HB, col = "white", las = 1, xlab = "", ylab = "estimates", ylim = c(-0.1, 0.4),  xaxt = "n")
+axis(1, at = 1:nrow(estimates), labels = estimates$timepoint, las=2, cex.axis = 0.7)
 
-timepoints = unique(estimates$timepoint)
-timepoints
+points(which(!is.na(estimates$estimate_HB)),subset(estimates, !is.na(estimate_HB))$estimate_HB, t = "b", col = "#00bb5c", lwd=2)
+points(which(!is.na(estimates$estimate_WI)),subset(estimates, !is.na(estimate_WI))$estimate_WI, t = "b", col = "#c96d00", lwd=2)
+points(which(!is.na(estimates$estimate_richness)),subset(estimates, !is.na(estimate_richness))$estimate_richness, t = "b", col = "#00a2ca", lwd=2)
+abline(h=0, lty="dashed", col="gray")
 
-estimates_means = data.frame()
-
-for (i in length(timepoints):1) {
-	this_time = subset(estimates, timepoint==timepoints[i])
-		
-		estimate_HB = mean(this_time$estimate_HB, na.rm=T)
-		estimate_WI = mean(this_time$estimate_WI, na.rm=T)
-		estimate_all_insects = mean(this_time$estimate_all_insects, na.rm=T)
-		estimate_richness = mean(this_time$estimate_richness, na.rm=T)
-
-		if (estimate_HB=="NaN") { estimate_HB = NA }
-		if (estimate_WI=="NaN") { estimate_WI = NA }
-		if (estimate_all_insects=="NaN") { estimate_all_insects = NA }
-		if (estimate_richness=="NaN") { estimate_richness = NA }		
-	
-		this_means = data.frame(timepoint = timepoints[i],estimate_HB,estimate_WI,estimate_all_insects,estimate_richness)
-		estimates_means = rbind(this_means,estimates_means)
-	
-}
-
-#estimates_means
-
-estimates_means$index = 1:nrow(estimates_means)
-estimates = merge(estimates, estimates_means[,c("index","timepoint")], by="timepoint")
-
-plot(1:nrow(estimates_means),estimates_means$estimate_HB, col = "white", las = 1, xlab = "", ylab = "estimates", ylim = c(-0.1, 0.4),  xaxt = "n")
-axis(1, at = 1:nrow(estimates_means), labels = estimates_means$timepoint, las=2, cex.axis = 0.7)
-
-points(which(!is.na(estimates_means$estimate_HB)),subset(estimates_means, !is.na(estimate_HB))$estimate_HB, t = "l", col = "#00bb5c", lwd=2)
-points(which(!is.na(estimates_means$estimate_WI)),subset(estimates_means, !is.na(estimate_WI))$estimate_WI, t = "l", col = "#c96d00", lwd=2)
-points(which(!is.na(estimates_means$estimate_all_insects)),subset(estimates_means, !is.na(estimate_all_insects))$estimate_all_insects, t = "l", col = "#ff0000", lwd=2)
-points(which(!is.na(estimates_means$estimate_richness)),subset(estimates_means, !is.na(estimate_richness))$estimate_richness, t = "l", col = "#00a2ca", lwd=2)
-
-points(subset(estimates, !is.na(estimate_HB))$index,subset(estimates, !is.na(estimate_HB))$estimate_HB, t = "p", col = "#00bb5c", pch=19, cex=1.5)
-points(subset(estimates, !is.na(estimate_WI))$index,subset(estimates, !is.na(estimate_WI))$estimate_WI, t = "p", col = "#c96d00", pch=19, cex=1.5)
-points(subset(estimates, !is.na(estimate_all_insects))$index,subset(estimates, !is.na(estimate_all_insects))$estimate_all_insects, t = "p", col = "#ff0000", pch=19, cex=1.5)
-points(subset(estimates, !is.na(estimate_richness))$index,subset(estimates, !is.na(estimate_richness))$estimate_richness, t = "p", col = "#00a2ca", pch=19, cex=1.5)
-
-#legend("topright", inset=.03, legend=c("honey bee", "wild insects", "all insects", "richness"), col=c("#00bb5c", "#c96d00", "#ff0000", "#00a2ca"), lty=1, lwd=2, box.lty=0)
-legend("topright", inset=.03, legend=c("all insects", "wild insects", "richness", "honey bee"), col=c("#ff0000", "#c96d00", "#00a2ca", "#00bb5c"), lty=1, lwd=2, box.lty=0)
-
-
+legend("topright", inset=.03, legend=c("wild insects", "honey bee", "richness"), col=c("#c96d00", "#00bb5c", "#00a2ca"), lty=1, lwd=2, box.lty=0)
 # Maybe we can add a legend and use somehow the info on sample size.
+
 ```
+
+Fig 4: This figure shows the history of the estimated effects of wild insects, honey bees, and richness on crop yield over time. Literature estimates are drawn from Garibaldi et al. 2013, Garibaldi et al. 2015, Rader et al. 2016, and Dainesse et al. 2019. Estimates based on the CropPol database are generated using model R18 as described in the paper.  
+
