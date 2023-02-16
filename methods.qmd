@@ -14,10 +14,6 @@ Our analysis uses the CropPol database (Allen-Perkins et al. 2022) as is basis. 
 
 A strength of the dynamic database is that it will allow continuous updates to our analysis as the number of available studies grows.
 
-```{r}
-# we can add a map, but I don't want to load more packages if not necesary.
-```
-
 ## Data processing
 
 Across the all datasets, the number of pollinators visiting flowers was measured in two different ways: either by observing the number of insects visiting flowers per unit time (a true visit rate), or by netting insects visiting flowers and summing the number of specimens collected. In the context of crop pollination studies, the latter data type is commonly referred to as "net data", and might be more accurately described as visitor abundance on flowers than as a true visit rate. In this analysis, we used the two interchangeably as "number of visits". If both types of measurements were available for a given dataset, preference was given to true visit rates; any potential variation in mean or variance that might result from the different collection methods across studies should be mitigated because we converted all values to z-scores for the analysis. We chose to combine the visits by all pollinators other than the honey bee into a "wild insects" group. Thus we compared two main groups, honey bee (HB) and wild insects (WI), consistent with previous analyses (e.g. Garibaldi et al. 2013). We did not drop studies that found or reported only bees as visitors, on the assumption that researchers for the most part did not neglect sampling insect groups that were important for the pollination of their crop. We did however drop studies that specifically focused on wild insect visitation and did not record honey bee visits at all, because these studies would misattribute to wild insects the yield due to honey bees. We did not need to do a similar filtering step for wild insects because wild insects were recorded in all studies.

@@ -40,7 +40,7 @@ axis(1,seq(5,90,5))
 
 ```
 
-Fig 1: This figure shows the proportion of total visits provided by wild insects (vs. honey bee) for each pollination study. In these boxplots, the bold center line is the median, the hollow boxes cover the interquartile range (IQR), and the whiskers extend to the most extreme points within 1.5\*IQR from the median. If any points are more extreme than this, they are plotted as gray circles.
+**Fig 1:** This figure shows the proportion of total visits provided by wild insects (vs. honey bee) for each pollination study. In these boxplots, the bold center line is the median, the hollow boxes cover the interquartile range (IQR), and the whiskers extend to the most extreme points within 1.5\*IQR from the median. If any points are more extreme than this, they are plotted as gray circles.
 
 ### 2) What are the relative contributions of honey bees versus wild insects to crop yield worldwide?
 
@@ -106,34 +106,36 @@ colnames(modelout)[7] = "mean_rich"
 colnames(modelout)[8] = "ci_lower_rich"
 colnames(modelout)[9] = "ci_upper_rich"
 modelout$crop = rownames(modelout)
-modelout
+#modelout
 modelout_mod_R18 = modelout
+
+```
+
+Similarly, we observe a large variation on the effect of pollinator richness, wild and honeybee visitation rates on crop yields, with an overall small, but positive effect size.
+
+```{r Fig2, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 # plot figure 2
 # plots random effect estimates by study, similar to Garibaldi et al 2013 fig 2b -----
-```
 
-Similarly, we observe a large variation on the effect of pollinator richness, wild and honeybee visitation rates on crop yields, with an overall small, but positive effect sizes. 
-
-```{r Fig2, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 par(mfrow=c(1,3))
 
 modelout_mod_R18 = modelout_mod_R18[order(modelout_mod_R18$mean_wi), , drop = FALSE]
-plot(1:nrow(modelout_mod_R18), modelout_mod_R18$mean_wi, pch=19, col="#00bb5c", ylim=c(-.75,.75), ylab="wild insect slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Wild Insects")
+plot(1:nrow(modelout_mod_R18), modelout_mod_R18$mean_wi, las = 1, pch=19, col="#00bb5c", ylim=c(-.75,.75), ylab="wild insect slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Wild Insects")
 axis(1, at=seq(0,nrow(modelout_mod_R18),10), labels=seq(0,nrow(modelout_mod_R18),10))
 arrows(1:nrow(modelout_mod_R18), modelout_mod_R18$ci_lower_wi, 1:nrow(modelout_mod_R18), modelout_mod_R18$ci_upper_wi, length=0.05, angle=90, code=3, col="#00bb5c", lwd=1.5)
 abline(h=a_wi, lty="dashed", lwd=2)
 abline(h=0, lwd=1, col="black", lty="dotted")
 
 modelout_mod_R18 = modelout_mod_R18[order(modelout_mod_R18$mean_hb), , drop = FALSE]
-plot(1:nrow(modelout_mod_R18), modelout_mod_R18$mean_hb, pch=19, col="#c96d00", ylim=c(-.75,.75), ylab="honey bee slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Honey Bee")
+plot(1:nrow(modelout_mod_R18), modelout_mod_R18$mean_hb, las = 1, pch=19, col="#c96d00", ylim=c(-.75,.75), ylab="honey bee slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Honey Bee")
 axis(1, at=seq(0,nrow(modelout_mod_R18),10), labels=seq(0,nrow(modelout_mod_R18),10))
 arrows(1:nrow(modelout_mod_R18), modelout_mod_R18$ci_lower_hb, 1:nrow(modelout_mod_R18), modelout_mod_R18$ci_upper_hb, length=0.05, angle=90, code=3, col="#c96d00", lwd=1.5)
 abline(h=a_hb, lty="dashed", lwd=2)
 abline(h=0, lwd=1, col="black", lty="dotted")
 
 modelout_mod_R18 = modelout_mod_R18[order(modelout_mod_R18$mean_rich), , drop = FALSE]
-plot(1:nrow(modelout_mod_R18), modelout_mod_R18$mean_rich, pch=19, col="#00a2ca", ylim=c(-.75,.75), ylab="richness slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Richness")
+plot(1:nrow(modelout_mod_R18), modelout_mod_R18$mean_rich, las = 1, pch=19, col="#00a2ca", ylim=c(-.75,.75), ylab="richness slope (mean and 95% CI)", cex=1.5, xaxt = "n", xlab="crop study", main="Richness")
 axis(1, at=seq(0,nrow(modelout_mod_R18),10), labels=seq(0,nrow(modelout_mod_R18),10))
 arrows(1:nrow(modelout_mod_R18), modelout_mod_R18$ci_lower_rich, 1:nrow(modelout_mod_R18), modelout_mod_R18$ci_upper_rich, length=0.05, angle=90, code=3, col="#00a2ca", lwd=1.5)
 abline(h=a_rich, lty="dashed", lwd=2)
@@ -141,7 +143,7 @@ abline(h=0, lwd=1, col="black", lty="dotted")
 
 ```
 
-Fig 2: This figure shows the estimated means and 95% CIs for the effect of wild insects, honey bee, and species richness on crop yield for each pollination study. The dashed black line is the overall mean across all studies. Means were calculated using the random effect estimates from the full model.
+**Fig 2:** This figure shows the estimated means and 95% CIs for the effect of wild insects, honey bee, and species richness on crop yield for each pollination study. The dashed black line is the overall mean across all studies. Means were calculated using the random effect estimates from the full model.
 
 ### 3) Is the total number of flower visits by pollinators sufficient to predict crop yields, or is the diversity of pollinator species also important?
 
@@ -161,7 +163,7 @@ thisout = data.frame(par = c("Wild insects", "Honey bee", "Richness"),
 	CIuppermod_R18 = c(summary(mod_R18)$coefficients[2] + 1.96*summary(mod_R18)$coefficients[9],summary(mod_R18)$coefficients[3] + 1.96*summary(mod_R18)$coefficients[10], summary(mod_R18)$coefficients[4] + 1.96*summary(mod_R18)$coefficients[11])
 	)
 	
-plot(1:3, thisout$mean_modR18, pch=19, col=c("#00bb5c", "#c96d00","#00a2ca"), cex=1.75, ylim=c(-0.1,0.3),  xlab = NA, xaxt = 'n', xlim=c(.5,3.5), ylab="Overall slope (mean, 95% CI)", main="")
+plot(1:3, thisout$mean_modR18, pch=19, col=c("#00bb5c", "#c96d00","#00a2ca"), cex=1.75, las = 1, ylim=c(-0.1,0.3),  xlab = NA, xaxt = 'n', xlim=c(.5,3.5), ylab="Overall slope (mean, 95% CI)", main="")
 axis(1, at=1:3, labels=thisout$par, srt=90)
 
 abline(h=0, lty="dashed", col="gray")
@@ -174,11 +176,11 @@ arrows(
 
 ```
 
-Fig 3: This figure shows the current overall mean estimate (and 95% CIs) for the effect of wild insects, honey bees, and richness on crop yield. Estimates based on the CropPol database are generated using the full model as described in the methods.
+**Fig 3:** This figure shows the current overall mean estimate (and 95% CIs) for the effect of wild insects, honey bees, and richness on crop yield. Estimates based on the CropPol database are generated using the full model as described in the methods.
 
 ### 4) How the relationships between pollinator visits, richness, and yield changed with the number of studies available?
 
-Since the first sinthesis papers, we found that the effect size tend to decrease as more studies are added to the analysis.
+Since the first synthesis papers, we found that the effect size tend to decrease as more studies are added to the analysis.
 
 ```{r Fig4, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
@@ -201,4 +203,4 @@ legend("topright", inset=.03, legend=c("wild insects", "honey bee", "richness"),
 
 ```
 
-Fig 4: This figure shows the history of the estimated effects of wild insects, honey bees, and richness on crop yield over time. Literature estimates are drawn from Garibaldi et al. 2013, Garibaldi et al. 2015, Rader et al. 2016, and Dainesse et al. 2019. Estimates based on the CropPol database are generated using the full model as described in methods.
+**Fig 4:** This figure shows the history of the estimated effects of wild insects, honey bees, and richness on crop yield over time. Literature estimates are drawn from Garibaldi et al. 2013, Garibaldi et al. 2015, Rader et al. 2016, and Dainesse et al. 2019. Estimates based on the CropPol database are generated using the full model as described in methods.
