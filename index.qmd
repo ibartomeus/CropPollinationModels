@@ -25,13 +25,13 @@ estimates <- read.csv("scripts/estimates_data.csv")
 
 ## Authors
 
-James Reilly^1^, Alfonso Allen-Perkins^2,3^, Rachael Winfree^1^, Ignasi Bartomeus^2^
+James Reilly^1^, Alfonso Allen-Perkins^2,3^, Rachael Winfree^1^, Ignasi Bartomeus^3^
 
 > (1) Department of Ecology, Evolution and Natural Resources, Rutgers University, New Brunswick, NJ, USA
 >
-> (2) Estación Biológica de Doñana (EBD-CSIC), Avenida Américo Vespucio 26, E-41092 Sevilla, Spain. Corresponding email: [nacho.bartomeus\@gmail.com](mailto:nacho.bartomeus@gmail.com)
+> (2) Departamento de Ingeniería Eléctrica, Electrónica, Automática y Física Aplicada, ETSIDI, Technical University of Madrid, 28040 Madrid, Spain.
 >
-> (3) Departamento de Ingeniería Eléctrica, Electrónica, Automática y Física Aplicada, ETSIDI, Technical University of Madrid, 28040 Madrid, Spain.
+> (3) Estación Biológica de Doñana (EBD-CSIC), Avenida Américo Vespucio 26, E-41092 Sevilla, Spain. Corresponding email: [nacho.bartomeus\@gmail.com](mailto:nacho.bartomeus@gmail.com)
 
 **Last update:** `r Sys.Date()`
 
