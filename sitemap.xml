@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/what_next.html</loc>
-    <lastmod>2023-04-01T00:18:23.459Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/methods.html</loc>
-    <lastmod>2023-04-01T00:18:24.191Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/News.html</loc>
-    <lastmod>2023-04-01T00:18:24.503Z</lastmod>
-  </url>
-  <url>
     <loc>https://github.com/ibartomeus/CropPollinationModels/introduction.html</loc>
-    <lastmod>2023-04-01T00:18:24.831Z</lastmod>
+    <lastmod>2023-05-08T09:24:53.741Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/results.html</loc>
-    <lastmod>2023-04-01T00:18:30.767Z</lastmod>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/what_next.html</loc>
+    <lastmod>2023-05-08T09:24:54.673Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ibartomeus/CropPollinationModels/index.html</loc>
-    <lastmod>2023-04-01T00:18:32.399Z</lastmod>
+    <lastmod>2023-05-08T09:24:56.985Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/results.html</loc>
+    <lastmod>2023-05-08T09:25:05.173Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/News.html</loc>
+    <lastmod>2023-05-08T09:25:05.565Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ibartomeus/CropPollinationModels/references.html</loc>
-    <lastmod>2023-04-01T00:18:42.695Z</lastmod>
+    <lastmod>2023-05-08T09:25:06.145Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/methods.html</loc>
+    <lastmod>2023-05-08T09:25:06.753Z</lastmod>
   </url>
 </urlset>
