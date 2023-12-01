@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/introduction.html</loc>
-    <lastmod>2023-11-01T00:20:10.882Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/index.html</loc>
-    <lastmod>2023-11-01T00:20:10.254Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/references.html</loc>
-    <lastmod>2023-11-01T00:20:08.338Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/results.html</loc>
-    <lastmod>2023-11-01T00:20:07.186Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/methods.html</loc>
-    <lastmod>2023-11-01T00:20:07.934Z</lastmod>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/News.html</loc>
+    <lastmod>2023-12-01T00:15:44.199Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ibartomeus/CropPollinationModels/what_next.html</loc>
-    <lastmod>2023-11-01T00:20:08.626Z</lastmod>
+    <lastmod>2023-12-01T00:15:43.615Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/ibartomeus/CropPollinationModels/News.html</loc>
-    <lastmod>2023-11-01T00:20:10.526Z</lastmod>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/index.html</loc>
+    <lastmod>2023-12-01T00:15:38.639Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/methods.html</loc>
+    <lastmod>2023-12-01T00:15:36.207Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/references.html</loc>
+    <lastmod>2023-12-01T00:15:36.843Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/results.html</loc>
+    <lastmod>2023-12-01T00:15:43.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ibartomeus/CropPollinationModels/introduction.html</loc>
+    <lastmod>2023-12-01T00:15:43.939Z</lastmod>
   </url>
 </urlset>
